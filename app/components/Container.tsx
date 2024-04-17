@@ -11,7 +11,7 @@ import {Combobox} from "@/components/combobox";
 const Container = () => {
   const [num, setNum] = useState<number>(0)
 
-  const { data, refetch } = useQuery({
+  const { data, refetch } = useQuery<any>({
     queryKey: ["data", num],
     queryFn: () => getData(num),
     staleTime: 1000 * 60,

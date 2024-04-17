@@ -17,11 +17,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import {getData, getSurah} from "@/app/store";
+import { getSurah} from "@/app/store";
 import {useQuery} from "@tanstack/react-query";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
-export function Combobox({ setNum }) {
+export function Combobox({ setNum }: any) {
   const { data: { chapters } } = useQuery({
     queryKey: ["surah"],
     queryFn: () => getSurah(),
@@ -30,13 +30,12 @@ export function Combobox({ setNum }) {
 
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-  console.log(chapters)
 
   useEffect(() => {
     if (value) {
       setNum(value)
     }
-  }, [value])
+  }, [value, setNum])
 
   if (chapters.length) {
     return (
@@ -49,7 +48,7 @@ export function Combobox({ setNum }) {
             className="w-[200px] justify-between"
           >
             {value
-              ? chapters.find((framework) => framework.id === value)?.name_simple
+              ? chapters.find((framework: any) => framework.id === value)?.name_simple
               : "Select framework..."}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
@@ -60,7 +59,7 @@ export function Combobox({ setNum }) {
             <CommandList>
               <CommandEmpty>No framework found.</CommandEmpty>
               <CommandGroup>
-                {chapters.map((framework) => (
+                {chapters.map((framework: any) => (
                   <CommandItem
                     key={framework.id}
                     value={framework.id}
