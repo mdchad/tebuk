@@ -49,13 +49,13 @@ export function Combobox({ setNum }: any) {
           >
             {value
               ? chapters.find((framework: any) => framework.id === value)?.name_simple
-              : "Select framework..."}
+              : "Select surah..."}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0">
           <Command>
-            <CommandInput placeholder="Search framework..." />
+            <CommandInput placeholder="Search surah..." />
             <CommandList>
               <CommandEmpty>No framework found.</CommandEmpty>
               <CommandGroup>
