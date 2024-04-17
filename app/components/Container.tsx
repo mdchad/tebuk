@@ -1,12 +1,12 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import {Button} from "@/components/ui/button";
 import {getData} from "@/app/store";
 import {useState} from "react";
 import Ayah from "@/app/components/Ayah";
 import Main from "@/app/components/Main";
 import {Combobox} from "@/components/combobox";
+import {Settings} from "@/app/components/Settings";
 
 const Container = () => {
   const [num, setNum] = useState<number>(0)
@@ -25,6 +25,7 @@ const Container = () => {
       <div className="p-8 rounded-xl text-right line">
         { data && <Ayah data={data}/> }
       </div>
+      {/*<Settings />*/}
     </div>
   );
 };

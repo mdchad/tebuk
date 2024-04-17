@@ -1,11 +1,7 @@
 import {dehydrate} from "@tanstack/query-core";
 import Hydrate from "@/app/Hydrate";
 import {getData, getQueryClient, getSurah} from "@/app/store";
-import Main from "@/app/components/Main";
-import Ayah from "@/app/components/Ayah";
-import {useState} from "react";
 import Container from "@/app/components/Container";
-import {Combobox} from "@/components/combobox";
 
 export default async function Home() {
   const client = getQueryClient();
