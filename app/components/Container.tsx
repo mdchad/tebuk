@@ -38,16 +38,15 @@ const Container = () => {
         <Button size="sm" disabled={!data} onClick={() => refetch()}><Sparkles size={20} color={'white'}/></Button>
       </div>
       <AnimatePresence>
+        <motion.div
+          key={data?.verse?.id}
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          // exit={{ y: -10, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           { data && fetchStatus === 'idle' && <Verse data={data}/>}
-        {/*<motion.div*/}
-        {/*  key={data?.verse?.id}*/}
-        {/*  initial={{ y: 10, opacity: 0 }}*/}
-        {/*  animate={{ y: 0, opacity: 1 }}*/}
-        {/*  // exit={{ y: -10, opacity: 0 }}*/}
-        {/*  transition={{ duration: 0.5 }}*/}
-        {/*  className="p-8 rounded-xl text-right line"*/}
-        {/*>*/}
-        {/*</motion.div>*/}
+        </motion.div>
       </AnimatePresence>
     </div>
   );

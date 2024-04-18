@@ -60,21 +60,24 @@ const Verse = ({ data }: any) => {
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={container}
-    >
+    <>
+    {/* <motion.div*/}
+    {/*  initial="hidden"*/}
+    {/*  animate="visible"*/}
+    {/*  variants={container}*/}
+    {/*>*/}
       <p lang="ar" dir="rtl" className="font-arabic text-3xl leading-loose">
-        {data.verse.text_imlaei.split('').map((text: string, index: number) => {
-          return (
-            <motion.span
-              key={index}
-              variants={child}>
-              {text}
-            </motion.span>
-          )
-        })}
+        {/*{data.verse.text_imlaei.split('').map((text: string, index: number) => {*/}
+        {/*  return (*/}
+        {/*    <motion.span*/}
+        {/*      className="font-arabic"*/}
+        {/*      key={index}*/}
+        {/*      variants={child}>*/}
+        {/*      {text}*/}
+        {/*    </motion.span>*/}
+        {/*  )*/}
+        {/*})}*/}
+        {data.verse.text_imlaei}
         <span>{getUnicodeCharacter(data.verse.verse_number)}</span>
       </p>
       <motion.p
@@ -85,8 +88,8 @@ const Verse = ({ data }: any) => {
       >
         Continue the verse
       </motion.p>
-    </motion.div>
-  );
-};
+    {/*</motion.div>*/}
+  </>
+);};
 
 export default Verse;
