@@ -4,10 +4,13 @@ import { cache } from "react";
 export const getQueryClient = cache(() => new QueryClient());
 
 
-export const getData = async (page: number) => {
+export const getData = async ({ chapter, page, juz }: any) => {
+  console.log('pageee', page)
   const dataList = await fetch(`https://api.quran.com/api/v4/verses/random?${new URLSearchParams({
     fields: ['text_imlaei', 'text_uthmani', 'chapter_id'].toString(),
-    chapter_number: page.toString(),
+    ...(chapter ? { chapter_number: chapter.toString() } : {} ),
+    ...(page ? { page_number: page.toString() } : {} ),
+    ...(juz ? { juz_number: juz.toString() } : {} ),
     words: true.toString(),
     word_fields: ['text_imlaei, position'].toString()
   })}`).then(
