@@ -66,7 +66,7 @@ const Verse = ({ data }: any) => {
       variants={container}
     >
       <p lang="ar" dir="rtl" className="font-arabic text-3xl leading-loose">
-        {data.verse.text_imlaei.split('').map((text, index) => {
+        {data.verse.text_imlaei.split('').map((text: string, index: number) => {
           return (
             <motion.span
               key={index}

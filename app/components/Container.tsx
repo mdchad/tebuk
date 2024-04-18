@@ -17,8 +17,7 @@ const Container = () => {
     queryKey: ["data", num],
     queryFn: () => getData(num),
     enabled: Boolean(num),
-    staleTime: Infinity,
-    keepPreviousData: true
+    staleTime: Infinity
   });
 
   // const containerVariants = {
