@@ -11,7 +11,7 @@ export function SurahSettings({ setSettings }: any) {
   const { data: { chapters } } = useQuery({
     queryKey: ["surah"],
     queryFn: () => getSurah(),
-    staleTime: 1000 * 60
+    staleTime: Infinity
   });
 
   const [value, setValue] = React.useState(1)

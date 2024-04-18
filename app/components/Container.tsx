@@ -9,15 +9,36 @@ import {Settings} from "@/app/components/Settings";
 import {Button} from "@/components/ui/button";
 import {Sparkles} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import {getRandomInt} from "@/lib/utils";
 
 interface ISettings {
   chapter: number
   page: number
   juz: number
+  rangeValue: {
+    value: number[]
+    mode: string
+  }
+}
+
+const mapping: any = {
+  chapter: 'surah',
+  page: 'page',
+  juz: 'juz'
 }
 
 const Container = () => {
-  const [settings, setSettings] = useState<ISettings>({ chapter: 0, page: 0, juz: 0 })
+  const [settings, setSettings] = useState<ISettings>({ chapter: 0, page: 0, juz: 0, rangeValue: { mode: '', value: [0, 0]} })
+
+  function setValue() {
+    if (!settings.rangeValue.mode) {
+      refetch()
+    } else {
+      let randomNumber = getRandomInt(settings.rangeValue.value[0], settings.rangeValue.value[1])
+      setSettings((prev) => ({ ...prev, [settings.rangeValue.mode]: randomNumber }))
+    }
+
+  }
 
   const { data, refetch, fetchStatus } = useQuery<any>({
     queryKey: ["data", settings.chapter, settings.page, settings.juz],
@@ -29,7 +50,7 @@ const Container = () => {
   function findTruthyKey(obj: ISettings) {
     for (const [key, value] of Object.entries(obj)) {
       if (value) {
-        return key;
+        return mapping[key];
       }
     }
     return 'not selected yet'; // Return null if no truthy values are found
@@ -44,7 +65,7 @@ const Container = () => {
         </div>
         <Settings setSettings={setSettings}/>
         {/*<Combobox setNum={setNum}/>*/}
-        <Button size="sm" disabled={!data} onClick={() => refetch()}><Sparkles size={20} color={'white'}/></Button>
+        <Button size="sm" disabled={!data} onClick={() => setValue()}><Sparkles size={20} color={'white'}/></Button>
       </div>
       <AnimatePresence>
         <motion.div

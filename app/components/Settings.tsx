@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Minus, Plus, SlidersHorizontal} from "lucide-react"
+import {SlidersHorizontal} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {

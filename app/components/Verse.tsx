@@ -66,7 +66,7 @@ const Verse = ({ data }: any) => {
     {/*  animate="visible"*/}
     {/*  variants={container}*/}
     {/*>*/}
-      <p lang="ar" dir="rtl" className="font-arabic text-3xl leading-loose">
+      <p lang="ar" dir="rtl" className="font-arabic text-3xl leading-loose text-justify">
         {/*{data.verse.text_imlaei.split('').map((text: string, index: number) => {*/}
         {/*  return (*/}
         {/*    <motion.span*/}
