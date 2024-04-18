@@ -21,7 +21,7 @@ export function Settings({ setSettings }: any) {
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
-          <Tabs defaultValue="surah" className="mt-3 w-[400px]">
+          <Tabs defaultValue="surah" className="mt-3">
             <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="surah">Surah</TabsTrigger>
               <TabsTrigger value="page">Page</TabsTrigger>
