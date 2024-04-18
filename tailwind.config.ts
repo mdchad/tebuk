@@ -18,6 +18,7 @@ const config = {
     extend: {
       fontFamily: {
         arabic: ['var(--font-arabic)'],
+        arabicV1: ['var(--font-arabicV1)'],
         ayah: ['var(--font-ayah)'],
         raleway: ['var(--font-raleway)'],
       },

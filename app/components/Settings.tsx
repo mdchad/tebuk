@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Minus, Plus } from "lucide-react"
+import {Minus, Plus, SlidersHorizontal} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -65,7 +65,7 @@ export function Settings() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline">Open Drawer</Button>
+        <Button variant="outline" size="sm"><SlidersHorizontal size={18} /></Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">

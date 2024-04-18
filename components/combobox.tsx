@@ -45,7 +45,7 @@ export function Combobox({ setNum }: any) {
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="w-[200px] justify-between"
+            className="w-[150px] justify-between"
           >
             {value
               ? chapters.find((framework: any) => framework.id === value)?.name_simple
@@ -57,7 +57,7 @@ export function Combobox({ setNum }: any) {
           <Command>
             <CommandInput placeholder="Search surah..." />
             <CommandList>
-              <CommandEmpty>No framework found.</CommandEmpty>
+              <CommandEmpty>No surah found.</CommandEmpty>
               <CommandGroup>
                 {chapters.map((framework: any) => (
                   <CommandItem

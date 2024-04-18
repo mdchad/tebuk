@@ -8,6 +8,14 @@ export const arabicFont = localFont(
   }
 )
 
+export const arabicV1Font = localFont(
+  {
+    src: [{ path: '../public/fonts/UthmanicHafs.woff2', weight: '400' }],
+    display: 'swap',
+    variable: '--font-arabicV1'
+  }
+)
+
 export const ayahFont = localFont(
   {
     src: [{ path: '../public/fonts/quran-common/quran_common.ttf', weight: '400' }],

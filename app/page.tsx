@@ -17,9 +17,9 @@ export default async function Home() {
   return (
     <>
       <header className="text-center mt-4">
-        <p className="font-raleway font-bold text-4xl">tebuk.</p>
+        <p className="font-raleway font-bold text-5xl">tebuk.</p>
       </header>
-      <main className="flex min-h-screen w-full flex-col items-center p-8 lg:p-24">
+      <main className="flex w-full flex-col items-center p-8 lg:p-24">
         <Hydrate state={dehydratedState}>
           <Container />
         </Hydrate>

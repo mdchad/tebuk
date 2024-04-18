@@ -3,7 +3,7 @@ import { Inter, Raleway } from "next/font/google";
 import "./globals.css";
 import Providers from "@/app/provider";
 
-import {arabicFont, ayahFont} from "@/app/font";
+import {arabicFont, ayahFont, arabicV1Font} from "@/app/font";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${raleway.variable} ${arabicFont.variable} ${ayahFont.variable}`}>
+    <html lang="en" className={`${raleway.variable} ${arabicFont.variable} ${ayahFont.variable} ${arabicV1Font.variable}`}>
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>

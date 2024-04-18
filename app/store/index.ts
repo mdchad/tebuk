@@ -5,7 +5,12 @@ export const getQueryClient = cache(() => new QueryClient());
 
 
 export const getData = async (page: number) => {
-  const dataList = await fetch(`https://api.quran.com/api/v4/verses/random?fields=text_imlaei,text_uthmani,chapter_id&chapter_number=${page}`).then(
+  const dataList = await fetch(`https://api.quran.com/api/v4/verses/random?${new URLSearchParams({
+    fields: ['text_imlaei', 'text_uthmani', 'chapter_id'].toString(),
+    chapter_number: page.toString(),
+    words: true.toString(),
+    word_fields: ['text_imlaei, position'].toString()
+  })}`).then(
     (res) => res.json()
   );
 
