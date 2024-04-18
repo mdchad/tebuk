@@ -60,6 +60,7 @@ export function PageSettings({ setSettings }: any) {
         </div>
         <AnimatePresence>
           <motion.div
+            key={range ? 1 : 0}
             initial={{ x: 10, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             // exit={{ y: -10, opacity: 0 }}

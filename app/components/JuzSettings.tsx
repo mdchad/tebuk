@@ -2,8 +2,6 @@ import {DrawerClose, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle}
 import {Button} from "@/components/ui/button";
 import {TabsContent} from "@/components/ui/tabs";
 import * as React from "react";
-import {getSurah} from "@/app/store";
-import {useQuery} from "@tanstack/react-query";
 import {Minus, Plus } from "lucide-react"
 import {getRandomInt} from "@/lib/utils";
 import {AnimatePresence, motion} from "framer-motion";
@@ -62,6 +60,7 @@ export function JuzSettings({ setSettings }: any) {
         </div>
         <AnimatePresence>
           <motion.div
+            key={range ? 1 : 0}
             initial={{ x: 10, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             // exit={{ y: -10, opacity: 0 }}
