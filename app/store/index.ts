@@ -5,7 +5,6 @@ export const getQueryClient = cache(() => new QueryClient());
 
 
 export const getData = async ({ chapter, page, juz }: any) => {
-  console.log('pageee', page)
   const dataList = await fetch(`https://api.quran.com/api/v4/verses/random?${new URLSearchParams({
     fields: ['text_imlaei', 'text_uthmani', 'chapter_id'].toString(),
     ...(chapter ? { chapter_number: chapter.toString() } : {} ),
