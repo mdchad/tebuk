@@ -10,6 +10,7 @@ import {Button} from "@/components/ui/button";
 import {Sparkles} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {getRandomInt} from "@/lib/utils";
+import {set} from "yaml/dist/schema/yaml-1.1/set";
 
 interface ISettings {
   chapter: number

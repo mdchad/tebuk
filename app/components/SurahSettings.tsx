@@ -17,7 +17,7 @@ export function SurahSettings({ setSettings }: any) {
   const [value, setValue] = React.useState(1)
 
   function onSubmit() {
-    setSettings({ chapter: value, juz: 0, page: 0 })
+    setSettings({ chapter: value, juz: 0, page: 0, rangeValue: { mode: '', value: [0, 0]} })
   }
 
   return (

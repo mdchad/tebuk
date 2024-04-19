@@ -16,7 +16,7 @@ export function PageSettings({ setSettings }: any) {
       let randomGenerator = getRandomInt(value, secondValue)
       setSettings(() => ({ page: randomGenerator, chapter: 0, juz: 0, rangeValue: { mode: 'page', value: [value, secondValue] }}))
     } else {
-      setSettings((prev: any) => ({ ...prev, page: value, chapter: 0, juz: 0 }))
+      setSettings((prev: any) => ({ page: value, chapter: 0, juz: 0, rangeValue: { mode: '', value: [0, 0]} }))
     }
   }
 

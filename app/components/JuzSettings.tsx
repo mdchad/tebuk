@@ -16,7 +16,7 @@ export function JuzSettings({ setSettings }: any) {
       let randomGenerator = getRandomInt(value, secondValue)
       setSettings(() => ({ juz: randomGenerator, chapter: 0, page: 0, rangeValue: { mode: 'page', value: [value, secondValue] }}))
     } else {
-      setSettings((prev: any) => ({ ...prev, juz: value, chapter: 0, page: 0 }))
+      setSettings((prev: any) => ({ juz: value, chapter: 0, page: 0, rangeValue: { mode: '', value: [0, 0]} }))
     }
   }
 
