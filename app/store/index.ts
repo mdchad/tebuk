@@ -11,7 +11,8 @@ export const getData = async ({ chapter, page, juz }: any) => {
     ...(page ? { page_number: page.toString() } : {} ),
     ...(juz ? { juz_number: juz.toString() } : {} ),
     words: true.toString(),
-    word_fields: ['text_imlaei, position'].toString()
+    word_fields: ['text_imlaei, position'].toString(),
+    translations: [39].toString()
   })}`).then(
     (res) => res.json()
   );
