@@ -7,7 +7,7 @@ import Verse from "@/app/components/Verse";
 import {Combobox} from "@/components/combobox";
 import {Settings} from "@/app/components/Settings";
 import {Button} from "@/components/ui/button";
-import {Sparkles} from "lucide-react";
+import {Shuffle} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {getRandomInt} from "@/lib/utils";
 
@@ -65,7 +65,7 @@ const Container = () => {
         </div>
         <Settings setSettings={setSettings}/>
         {/*<Combobox setNum={setNum}/>*/}
-        <Button size="sm" disabled={!data} onClick={() => setValue()}><Sparkles size={20} color={'white'}/></Button>
+        <Button size="sm" disabled={!data} onClick={() => setValue()}><Shuffle size={20} color={'white'}/></Button>
       </div>
       <AnimatePresence>
         <motion.div

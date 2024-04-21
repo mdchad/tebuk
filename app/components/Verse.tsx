@@ -67,14 +67,17 @@ const Verse = ({ data }: any) => {
     {/*  variants={container}*/}
     {/*>*/}
       <p lang="ar" dir="rtl" className="font-arabic text-3xl leading-loose text-justify">
-        {/*{data.verse.text_imlaei.split('').map((text: string, index: number) => {*/}
+        {/*{data.verse.words.sort((a,b) => a.position - b.position).map((text: any, index: number) => {*/}
         {/*  return (*/}
-        {/*    <motion.span*/}
-        {/*      className="font-arabic"*/}
-        {/*      key={index}*/}
-        {/*      variants={child}>*/}
-        {/*      {text}*/}
-        {/*    </motion.span>*/}
+        {/*    <>*/}
+        {/*      <motion.span*/}
+        {/*        className="font-arabic"*/}
+        {/*        key={index}*/}
+        {/*        variants={child}>*/}
+        {/*        {text.text_imlaei}*/}
+        {/*      </motion.span>*/}
+        {/*      <span>&nbsp;</span>*/}
+        {/*    </>*/}
         {/*  )*/}
         {/*})}*/}
         {data.verse.text_imlaei}
