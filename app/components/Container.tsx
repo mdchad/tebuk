@@ -32,6 +32,7 @@ const mapping: any = {
 const Container = () => {
   const [settings, setSettings] = useState<ISettings>({ chapter: 0, page: 0, juz: 0, rangeValue: { mode: '', value: [0, 0]} })
   const [revealSurah, setRevealSurah] = useState<boolean>(false)
+  const [revealPage, setRevealPage] = useState<boolean>(false)
 
   function setValue() {
     if (!settings.rangeValue.mode) {
@@ -67,12 +68,26 @@ const Container = () => {
             <p className="font-mono text-sm">Surah:
               {
                 revealSurah ?
-                  <span> {chapter.find(c => c.id === data.verse.chapter_id)?.name_simple}</span>:
+                  <span> {chapter.find(c => c.id === data?.verse.chapter_id)?.name_simple}</span>:
                   <span> ● ● ● ●</span>
               }
             </p>
             <Button size="sm" variant="ghost" onClick={() => setRevealSurah(!revealSurah)}>
               { revealSurah ? (
+                <EyeOff size={18} />
+              ) : (
+                <Eye size={18} />
+              )}
+            </Button>
+            <p className="font-mono text-sm">Page:
+              {
+                revealPage ?
+                  <span> {data?.verse.page_number}</span>:
+                  <span> ● ● </span>
+              }
+            </p>
+            <Button size="sm" variant="ghost" onClick={() => setRevealPage(!revealPage)}>
+              { revealPage ? (
                 <EyeOff size={18} />
               ) : (
                 <Eye size={18} />
