@@ -56,7 +56,7 @@ const Container = () => {
     return 'not selected yet'; // Return null if no truthy values are found
   }
 
-  const SkeletonLoadingComponent = (id) => {
+  const SkeletonLoadingComponent = ({ key, id }: any ) => {
     return (
       <motion.div
         key={id}
