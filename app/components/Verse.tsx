@@ -6,6 +6,7 @@ import {useState} from "react";
 import {getSpecificVerse, getSurah} from "@/app/store";
 import {useQuery} from "@tanstack/react-query";
 import {Separator} from "@/components/ui/separator";
+import {arabicV1Font} from "@/app/font";
 
 function getUnicodeCharacter(n: number) {
   const baseHex = 'FC00';
@@ -101,7 +102,7 @@ const Verse = ({ data: verse }: any) => {
         {/*    </>*/}
         {/*  )*/}
         {/*})}*/}
-        {verse.verse.text_imlaei}
+        {verse.verse.text_uthmani.replace(/\u{06DF}/gu, "\u{0652}")}
         <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
         <AnimatePresence>
           <motion.div

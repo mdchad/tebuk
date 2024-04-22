@@ -10,7 +10,7 @@ export const arabicFont = localFont(
 
 export const arabicV1Font = localFont(
   {
-    src: [{ path: '../public/fonts/UthmanicHafs.woff2', weight: '400' }],
+    src: [{ path: '../public/fonts/uthmanic_hafs_v22.ttf', weight: '400' }],
     display: 'swap',
     variable: '--font-arabicV1'
   }

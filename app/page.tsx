@@ -19,7 +19,7 @@ export default async function Home() {
       <header className="text-center mt-4">
         <p className="font-raleway font-bold text-5xl">tebuk.</p>
       </header>
-      <main className="flex w-full flex-col items-center p-8 lg:p-24">
+      <main className="flex w-full flex-col items-center px-8 py-2 lg:p-24">
         <Hydrate state={dehydratedState}>
           <Container />
         </Hydrate>
