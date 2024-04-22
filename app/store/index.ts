@@ -4,7 +4,7 @@ import { cache } from "react";
 export const getQueryClient = cache(() => new QueryClient());
 
 
-export const getData = async ({ chapter, page, juz }: any) => {
+export const getRandomVerse = async ({ chapter, page, juz }: any) => {
   const dataList = await fetch(`https://api.quran.com/api/v4/verses/random?${new URLSearchParams({
     fields: ['text_imlaei', 'text_uthmani', 'chapter_id'].toString(),
     ...(chapter ? { chapter_number: chapter.toString() } : {} ),
@@ -13,6 +13,18 @@ export const getData = async ({ chapter, page, juz }: any) => {
     // words: true.toString(),
     // word_fields: ['text_imlaei, position'].toString(),
     translations: [39].toString(),
+  })}`).then(
+    (res) => res.json()
+  );
+
+  return { ...dataList };
+};
+
+export const getSpecificVerse = async (verse_key: any) => {
+  const dataList = await fetch(`https://api.quran.com/api/v4/verses/by_key/${verse_key}?${new URLSearchParams({
+    fields: ['text_imlaei', 'text_uthmani', 'chapter_id'].toString(),
+    // words: true.toString(),
+    // word_fields: ['text_imlaei, position'].toString(),
   })}`).then(
     (res) => res.json()
   );

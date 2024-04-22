@@ -20,12 +20,17 @@ export function PageSettings({ setSettings }: any) {
     }
   }
 
+  function addRange() {
+    setRange(true)
+    setSecondValue(value + 1)
+  }
+
   return (
     <TabsContent value="page">
-      <DrawerHeader>
-        <DrawerTitle>Review by Page</DrawerTitle>
-        <DrawerDescription>Set your page to review.</DrawerDescription>
-      </DrawerHeader>
+      {/*<DrawerHeader>*/}
+      {/*  <DrawerTitle>Review by Page</DrawerTitle>*/}
+      {/*  <DrawerDescription>Set your page to review.</DrawerDescription>*/}
+      {/*</DrawerHeader>*/}
       <div className="p-4 pb-0">
         <div className="flex items-center justify-center space-x-2">
           <Button
@@ -39,7 +44,7 @@ export function PageSettings({ setSettings }: any) {
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 items-center text-center">
-            <input className="text-4xl text-center font-bold tracking-tighter w-40" type="number" onChange={(e: any) => setValue(parseInt(e.target.value))} value={value}/>
+            <input className="text-3xl lg:text-4xl text-center font-bold tracking-tighter w-40" type="number" onChange={(e: any) => setValue(parseInt(e.target.value))} value={value}/>
             {/*<div className="text-2xl font-arabic text-muted-foreground">*/}
             {/*  {chapters.find(chapter => chapter.id === value)?.name_arabic}*/}
             {/*</div>*/}
@@ -56,14 +61,13 @@ export function PageSettings({ setSettings }: any) {
           </Button>
         </div>
         <div className="flex items-center justify-center my-6">
-          { range ? <p className="text-center text-xs font-mono">to</p> :<Button variant="secondary" size="sm" onClick={() => setRange(true)}>Add range</Button> }
+          { range ? <p className="text-center text-xs font-mono">to</p> :<Button variant="secondary" size="sm" onClick={addRange}>Add range</Button> }
         </div>
         <AnimatePresence>
           <motion.div
             key={range ? 1 : 0}
             initial={{ x: 10, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            // exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
             {range && (
@@ -80,9 +84,6 @@ export function PageSettings({ setSettings }: any) {
                 </Button>
                 <div className="flex-1 items-center text-center">
                   <input className="text-4xl text-center font-bold tracking-tighter w-40" type="number" onChange={(e: any) => setSecondValue(parseInt(e.target.value))} value={secondValue}/>
-                  {/*<div className="text-2xl font-arabic text-muted-foreground">*/}
-                  {/*  {chapters.find(chapter => chapter.id === value)?.name_arabic}*/}
-                  {/*</div>*/}
                 </div>
                 <Button
                   variant="outline"
@@ -98,17 +99,10 @@ export function PageSettings({ setSettings }: any) {
             )}
           </motion.div>
         </AnimatePresence>
-        <div className="mt-3 h-[80px]">
-        </div>
       </div>
-      <DrawerFooter>
-        <DrawerClose asChild>
-          <Button disabled={range && value > secondValue} onClick={onSubmit}>Submit</Button>
-        </DrawerClose>
-        <DrawerClose asChild>
-          <Button variant="outline">Cancel</Button>
-        </DrawerClose>
-      </DrawerFooter>
+      <div className="flex justify-center gap-2 mt-4">
+          <Button size="sm" disabled={range && value > secondValue} onClick={onSubmit}>Submit</Button>
+      </div>
     </TabsContent>
   )
 }

@@ -21,7 +21,7 @@ import { getSurah} from "@/app/store";
 import {useQuery} from "@tanstack/react-query";
 import {useEffect} from "react";
 
-export function Combobox({ setNum }: any) {
+export function Combobox({ setValue, value }: any) {
   const { data: { chapters } } = useQuery({
     queryKey: ["surah"],
     queryFn: () => getSurah(),
@@ -29,13 +29,6 @@ export function Combobox({ setNum }: any) {
   });
 
   const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
-
-  useEffect(() => {
-    if (value) {
-      setNum(value)
-    }
-  }, [value, setNum])
 
   if (chapters.length) {
     return (

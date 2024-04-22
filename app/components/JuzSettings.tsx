@@ -22,10 +22,10 @@ export function JuzSettings({ setSettings }: any) {
 
   return (
     <TabsContent value="juz">
-      <DrawerHeader>
-        <DrawerTitle>Review by Juz</DrawerTitle>
-        <DrawerDescription>Set your juz to review.</DrawerDescription>
-      </DrawerHeader>
+      {/*<DrawerHeader>*/}
+      {/*  <DrawerTitle>Review by Juz</DrawerTitle>*/}
+      {/*  <DrawerDescription>Set your juz to review.</DrawerDescription>*/}
+      {/*</DrawerHeader>*/}
       <div className="p-4 pb-0">
         <div className="flex items-center justify-center space-x-2">
           <Button
@@ -39,7 +39,7 @@ export function JuzSettings({ setSettings }: any) {
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 items-center text-center">
-            <input className="text-4xl text-center font-bold tracking-tighter w-40" type="number" onChange={(e: any) => setValue(parseInt(e.target.value))} value={value} />
+            <input className="text-3xl lg:text-4xl text-center font-bold tracking-tighter w-40" type="number" onChange={(e: any) => setValue(parseInt(e.target.value))} value={value} />
             {/*<div className="text-2xl font-arabic text-muted-foreground">*/}
             {/*  {chapters.find(chapter => chapter.id === value)?.name_arabic}*/}
             {/*</div>*/}
@@ -95,17 +95,12 @@ export function JuzSettings({ setSettings }: any) {
             )}
           </motion.div>
         </AnimatePresence>
-        <div className="mt-3 h-[80px]">
-        </div>
+        {/*<div className="mt-3 h-[80px]">*/}
+        {/*</div>*/}
       </div>
-      <DrawerFooter>
-        <DrawerClose asChild>
-          <Button disabled={range && value > secondValue} onClick={onSubmit}>Submit</Button>
-        </DrawerClose>
-        <DrawerClose asChild>
-          <Button variant="outline">Cancel</Button>
-        </DrawerClose>
-      </DrawerFooter>
+      <div className="flex justify-center gap-2 mt-4">
+        <Button size="sm" disabled={range && value > secondValue } onClick={onSubmit}>Submit</Button>
+      </div>
     </TabsContent>
   )
 }

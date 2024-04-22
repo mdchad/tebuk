@@ -1,6 +1,6 @@
 import {dehydrate} from "@tanstack/query-core";
 import Hydrate from "@/app/Hydrate";
-import {getData, getQueryClient, getSurah} from "@/app/store";
+import {getRandomVerse, getQueryClient, getSurah} from "@/app/store";
 import Container from "@/app/components/Container";
 
 export default async function Home() {

@@ -1,5 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
+import {ChevronFirst} from "lucide-react";
+import {Button} from "@/components/ui/button";
+import {useState} from "react";
+import {getSpecificVerse, getSurah} from "@/app/store";
+import {useQuery} from "@tanstack/react-query";
+import {Separator} from "@/components/ui/separator";
 
 function getUnicodeCharacter(n: number) {
   const baseHex = 'FC00';
@@ -10,7 +16,22 @@ function getUnicodeCharacter(n: number) {
   return unicodeCharacter;
 }
 
-const Verse = ({ data }: any) => {
+const Verse = ({ data: verse }: any) => {
+  const [verseKey, setVerseKey] = useState("")
+  const { data } = useQuery({
+    queryKey: ["nextVerse", verseKey],
+    queryFn: () => getSpecificVerse(verseKey),
+    staleTime: 1000 * 60,
+    enabled: !!verseKey
+  });
+
+  function getNextVerse() {
+    if (verse.verse) {
+      let nextVerseKey = `${verse.verse.chapter_id}:${verse.verse.verse_number + 1}`
+      setVerseKey(nextVerseKey)
+    }
+  }
+
   const child = {
     visible: {
       opacity: 1,
@@ -34,12 +55,12 @@ const Verse = ({ data }: any) => {
     },
   };
 
-  const text = data.verse.text_imlaei;
+  const text = verse.verse.text_imlaei;
   const numCharacters = text.length;
   const staggerDuration = 0.003; // duration between stagger animations
   const initialDelay = 0.001; // initial delay before stagger starts
 
-  // The total duration before the last letter starts animating
+// The total duration before the last letter starts animating
   const totalAnimationTime = initialDelay + staggerDuration * numCharacters;
 
   const container = {
@@ -80,11 +101,32 @@ const Verse = ({ data }: any) => {
         {/*    </>*/}
         {/*  )*/}
         {/*})}*/}
-        {data.verse.text_imlaei}
-        <span>{getUnicodeCharacter(data.verse.verse_number)}</span>
+        {verse.verse.text_imlaei}
+        <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
+        { !verseKey && (
+          <Button className="mr-2 inline" size="sm" variant="outline" onClick={getNextVerse}><span className="font-mono text-xs">Reveal the next ayah</span></Button>
+        )}
       </p>
+      <motion.div
+        className="py-6"
+        key={data?.verse?.id}
+        initial={{ y: 10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        // exit={{ y: -10, opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+      { data?.verse && (
+        <div className="flex flex-col space-y-6">
+          <Separator />
+          <p lang="ar" dir="rtl" className="font-arabic text-3xl leading-loose text-justify">
+            {data.verse.text_imlaei}
+            <span>{getUnicodeCharacter(data.verse.verse_number)}</span>
+          </p>
+        </div>
+      )}
+      </motion.div>
       <motion.p
-        className="mt-8 font-mono text-sm"
+        className="mt-12 mb-12 font-mono text-sm"
         variants={continuationVariants}
         initial="initial"
         animate="animate"

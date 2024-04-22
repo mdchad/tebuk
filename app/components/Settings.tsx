@@ -15,11 +15,11 @@ import {JuzSettings} from "@/app/components/JuzSettings";
 
 export function Settings({ setSettings }: any) {
   return (
-    <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant="outline" size="sm"><SlidersHorizontal size={18} /></Button>
-      </DrawerTrigger>
-      <DrawerContent>
+    // <Drawer>
+    //   <DrawerTrigger asChild>
+    //     <Button variant="outline" size="sm"><SlidersHorizontal size={18} /></Button>
+    //   </DrawerTrigger>
+    //   <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <Tabs defaultValue="surah" className="mt-3">
             <TabsList className="grid w-full grid-cols-4">
@@ -33,7 +33,7 @@ export function Settings({ setSettings }: any) {
             <JuzSettings setSettings={setSettings}/>
           </Tabs>
         </div>
-      </DrawerContent>
-    </Drawer>
+      // </DrawerContent>
+    // </Drawer>
   )
 }
