@@ -130,8 +130,8 @@ const Verse = ({ data: verse }: any) => {
       { data?.verse && (
         <div className="flex flex-col space-y-6">
           <Separator />
-          <p lang="ar" dir="rtl" className="font-arabic text-3xl leading-loose text-justify">
-            {data.verse.text_imlaei}
+          <p lang="ar" dir="rtl" className="font-arabic text-4xl leading-loose text-justify">
+            {verse.verse.text_uthmani.replace(/\u{06DF}/gu, "\u{0652}")}
             <span>{getUnicodeCharacter(data.verse.verse_number)}</span>
           </p>
         </div>
