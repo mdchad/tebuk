@@ -18,9 +18,9 @@ export const arabicV1Font = localFont(
 
 export const ayahFont = localFont(
   {
-    src: [{ path: '../public/fonts/quran-common/quran_common.ttf', weight: '400' }],
-    display: 'swap',
-    variable: '--font-ayah'
+    src: [{ path: '../public/fonts/hafs_v1/ttf/p10.ttf', weight: '400' }],
+    display: 'block',
+    variable: '--font-ayah',
   }
 )
 

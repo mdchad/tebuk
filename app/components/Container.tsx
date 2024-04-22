@@ -7,9 +7,11 @@ import Verse from "@/app/components/Verse";
 import {Combobox} from "@/components/combobox";
 import {Settings} from "@/app/components/Settings";
 import {Button} from "@/components/ui/button";
-import {Shuffle} from "lucide-react";
+import {Eye, EyeOff, Shuffle} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {getRandomInt} from "@/lib/utils";
+import {Skeleton} from "@/app/components/Skeleton";
+import {chapter} from "@/lib/chapters";
 
 interface ISettings {
   chapter: number
@@ -29,6 +31,7 @@ const mapping: any = {
 
 const Container = () => {
   const [settings, setSettings] = useState<ISettings>({ chapter: 0, page: 0, juz: 0, rangeValue: { mode: '', value: [0, 0]} })
+  const [revealSurah, setRevealSurah] = useState<boolean>(false)
 
   function setValue() {
     if (!settings.rangeValue.mode) {
@@ -56,30 +59,27 @@ const Container = () => {
     return 'not selected yet'; // Return null if no truthy values are found
   }
 
-  const SkeletonLoadingComponent = ({ key, id }: any ) => {
+  const BottomBar = ({ data }: any) => {
     return (
-      <motion.div
-        key={id}
-        initial={{ opacity: 0.5, backgroundPositionX: '-100%' }} // Initial opacity and background position
-        animate={{ opacity: 1, backgroundPositionX: '200%' }} // Animation to full opacity and shimmer effect
-        exit={{ opacity: 0.5 }} // When component unmounts, return to partial opacity
-        transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }} // Animation duration and loop
-        style={{
-          width: '300px', // Set your desired width
-          height: '30px', // Set your desired height
-          backgroundColor: '#E0E0E0', // Set your desired background color
-          borderRadius: '4px', // Set your desired border radius
-          marginBottom: '10px', // Set your desired margin bottom
-          background: 'linear-gradient(to right, #E0E0E0 0%, #F0F0F0 50%, #E0E0E0 100%)', // Shimmer effect gradient
-          backgroundSize: '200% 100%', // Shimmer effect width
-        }}
-      />
-    );
-  };
-
-  const BottomBar = () => {
-    return (
-      <div className="fixed bottom-0 left-0 w-full border-t border-t-gray-200 bg-white p-4 flex justify-end">
+      <div className="fixed bottom-0 left-0 w-full border-t border-t-gray-200 bg-white p-4 flex justify-between">
+        { !!settings?.juz ? (
+          <div className="flex gap-1 justify-center items-center">
+            <p className="font-mono text-sm">Surah:
+              {
+                revealSurah ?
+                  <span> {chapter.find(c => c.id === data.verse.chapter_id)?.name_simple}</span>:
+                  <span> ● ● ● ●</span>
+              }
+            </p>
+            <Button size="sm" variant="ghost" onClick={() => setRevealSurah(!revealSurah)}>
+              { revealSurah ? (
+                <EyeOff size={18} />
+              ) : (
+                <Eye size={18} />
+              )}
+            </Button>
+          </div>
+        ) : <div></div>}
         <Button size="sm" disabled={!data} onClick={() => setValue()}><Shuffle size={20} color={'white'}/></Button>
       </div>
     );
@@ -93,12 +93,10 @@ const Container = () => {
         {/*  <p className="text-sm text-gray-600 capitalize">{findTruthyKey(settings)}</p>*/}
         {/*</div>*/}
         <Settings setSettings={setSettings}/>
-        {/*<Combobox setNum={setNum}/>*/}
-        {/*<Button size="sm" disabled={!data} onClick={() => setValue()}><Shuffle size={20} color={'white'}/></Button>*/}
       </div>
       { isLoading ? (
         <div>
-          {Array(3).fill(1).map((_, i) => <SkeletonLoadingComponent key={`skeleton_${i}`} id={`skeleton_${i}`} />)}
+          {Array(3).fill(1).map((_, i) => <Skeleton key={`skeleton_${i}`} id={`skeleton_${i}`} />)}
         </div>
       ) : null}
       <AnimatePresence>
@@ -112,7 +110,7 @@ const Container = () => {
           { data && fetchStatus === 'idle' && <Verse data={data}/>}
         </motion.div>
       </AnimatePresence>
-      <BottomBar />
+      <BottomBar data={data}/>
     </div>
   );
 };

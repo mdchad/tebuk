@@ -6,7 +6,7 @@ export const getQueryClient = cache(() => new QueryClient());
 
 export const getRandomVerse = async ({ chapter, page, juz }: any) => {
   const dataList = await fetch(`https://api.quran.com/api/v4/verses/random?${new URLSearchParams({
-    fields: ['text_imlaei', 'text_uthmani', 'chapter_id'].toString(),
+    fields: ['text_imlaei', 'text_uthmani', 'chapter_id', 'v1_page'].toString(),
     ...(chapter ? { chapter_number: chapter.toString() } : {} ),
     ...(page ? { page_number: page.toString() } : {} ),
     ...(juz ? { juz_number: juz.toString() } : {} ),
@@ -23,8 +23,6 @@ export const getRandomVerse = async ({ chapter, page, juz }: any) => {
 export const getSpecificVerse = async (verse_key: any) => {
   const dataList = await fetch(`https://api.quran.com/api/v4/verses/by_key/${verse_key}?${new URLSearchParams({
     fields: ['text_imlaei', 'text_uthmani', 'chapter_id'].toString(),
-    // words: true.toString(),
-    // word_fields: ['text_imlaei, position'].toString(),
   })}`).then(
     (res) => res.json()
   );

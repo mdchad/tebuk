@@ -88,7 +88,7 @@ const Verse = ({ data: verse }: any) => {
     {/*  animate="visible"*/}
     {/*  variants={container}*/}
     {/*>*/}
-      <p lang="ar" dir="rtl" className="font-arabic text-3xl leading-loose text-justify">
+      <p lang="ar" dir="rtl" className="font-arabic text-4xl leading-loose">
         {/*{data.verse.words.sort((a,b) => a.position - b.position).map((text: any, index: number) => {*/}
         {/*  return (*/}
         {/*    <>*/}
@@ -103,6 +103,7 @@ const Verse = ({ data: verse }: any) => {
         {/*  )*/}
         {/*})}*/}
         {verse.verse.text_uthmani.replace(/\u{06DF}/gu, "\u{0652}")}
+        {/*{verse.verse.code_v1}*/}
         <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
         <AnimatePresence>
           <motion.div
