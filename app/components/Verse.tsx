@@ -104,7 +104,7 @@ const Verse = ({ data: verse }: any) => {
         {verse.verse.text_imlaei}
         <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
         { !verseKey && (
-          <Button className="mr-2 inline" size="sm" variant="outline" onClick={getNextVerse}><span className="font-mono text-xs">Reveal the next ayah</span></Button>
+          <Button className="mr-2" size="sm" variant="outline" onClick={getNextVerse}><span className="font-mono text-xs">Reveal the next ayah</span></Button>
         )}
       </p>
       <motion.div
