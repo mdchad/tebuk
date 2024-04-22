@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 import {ChevronFirst} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {useState} from "react";
@@ -103,9 +103,19 @@ const Verse = ({ data: verse }: any) => {
         {/*})}*/}
         {verse.verse.text_imlaei}
         <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
-        { !verseKey && (
-          <Button className="mr-2" size="sm" variant="outline" onClick={getNextVerse}><span className="font-mono text-xs">Reveal the next ayah</span></Button>
-        )}
+        <AnimatePresence>
+          <motion.div
+            key={verseKey}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            { !verseKey && (
+              <Button className="mr-2" size="sm" variant="outline" onClick={getNextVerse}><span className="font-mono text-xs">Reveal the next ayah</span></Button>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </p>
       <motion.div
         className="py-6"
