@@ -39,7 +39,7 @@ export function JuzSettings({ setSettings }: any) {
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 items-center text-center">
-            <input className="text-3xl lg:text-4xl text-center font-bold tracking-tighter w-40" type="number" onChange={(e: any) => setValue(parseInt(e.target.value))} value={value} />
+            <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="number" onChange={(e: any) => setValue(parseInt(e.target.value))} value={value} />
             {/*<div className="text-2xl font-arabic text-muted-foreground">*/}
             {/*  {chapters.find(chapter => chapter.id === value)?.name_arabic}*/}
             {/*</div>*/}

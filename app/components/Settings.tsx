@@ -15,25 +15,18 @@ import {JuzSettings} from "@/app/components/JuzSettings";
 
 export function Settings({ setSettings }: any) {
   return (
-    // <Drawer>
-    //   <DrawerTrigger asChild>
-    //     <Button variant="outline" size="sm"><SlidersHorizontal size={18} /></Button>
-    //   </DrawerTrigger>
-    //   <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
-          <Tabs defaultValue="surah" className="mt-3">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="surah">Surah</TabsTrigger>
-              <TabsTrigger value="page">Page</TabsTrigger>
-              <TabsTrigger value="juz">Juz</TabsTrigger>
-              <TabsTrigger value="translation">Translation</TabsTrigger>
-            </TabsList>
-            <SurahSettings setSettings={setSettings}/>
-            <PageSettings setSettings={setSettings}/>
-            <JuzSettings setSettings={setSettings}/>
-          </Tabs>
-        </div>
-      // </DrawerContent>
-    // </Drawer>
+    <div className="rounded-xl border px-8 pb-6 mx-auto w-80 max-w-sm">
+      <Tabs defaultValue="surah" className="mt-3">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="surah">Surah</TabsTrigger>
+          <TabsTrigger value="page">Page</TabsTrigger>
+          <TabsTrigger value="juz">Juz</TabsTrigger>
+          {/*<TabsTrigger value="translation">Translation</TabsTrigger>*/}
+        </TabsList>
+        <SurahSettings setSettings={setSettings}/>
+        <PageSettings setSettings={setSettings}/>
+        <JuzSettings setSettings={setSettings}/>
+      </Tabs>
+    </div>
   )
 }

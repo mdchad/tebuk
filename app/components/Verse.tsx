@@ -1,6 +1,6 @@
 "use client";
 import {AnimatePresence, motion} from "framer-motion";
-import {ChevronFirst} from "lucide-react";
+import {ChevronFirst, ChevronsRight} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {useState} from "react";
 import {getSpecificVerse, getSurah} from "@/app/store";
@@ -22,7 +22,8 @@ const Verse = ({ data: verse }: any) => {
   const { data } = useQuery({
     queryKey: ["nextVerse", verseKey],
     queryFn: () => getSpecificVerse(verseKey),
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 60 * 24,
+    cacheTime: 1000 * 60 * 24,
     enabled: !!verseKey
   });
 
@@ -105,20 +106,42 @@ const Verse = ({ data: verse }: any) => {
         {verse.verse.text_uthmani.replace(/\u{06DF}/gu, "\u{0652}")}
         {/*{verse.verse.code_v1}*/}
         <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
-        <AnimatePresence>
-          <motion.div
-            key={verseKey}
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            { !verseKey && (
-              <Button className="mr-2" size="sm" variant="outline" onClick={getNextVerse}><span className="font-mono text-xs">Reveal the next ayah</span></Button>
-            )}
-          </motion.div>
-        </AnimatePresence>
       </p>
+      {!verseKey && (
+        <>
+          <motion.p
+            className="ml-2 mt-12 font-mono text-sm"
+            variants={continuationVariants}
+            initial="initial"
+            animate="animate"
+          >
+            Continue the verse
+          </motion.p>
+          <motion.p
+            className="ml-2 mb-2 font-mono text-sm"
+            variants={continuationVariants}
+            initial="initial"
+            animate="animate"
+          >
+            or
+          </motion.p>
+        </>
+      )}
+      <AnimatePresence>
+        <motion.div
+          key={verseKey}
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          { !verseKey && (
+            <Button className="mr-2 gap-2" size="sm" variant="outline" onClick={getNextVerse}>
+              <ChevronsRight size={18} />
+              <span className="font-mono text-xs">Reveal the next ayah</span>
+            </Button>
+          )}
+        </motion.div>
+      </AnimatePresence>
       <motion.div
         className="py-6"
         key={data?.verse?.id}
@@ -137,14 +160,6 @@ const Verse = ({ data: verse }: any) => {
         </div>
       )}
       </motion.div>
-      <motion.p
-        className="mt-12 mb-12 font-mono text-sm"
-        variants={continuationVariants}
-        initial="initial"
-        animate="animate"
-      >
-        Continue the verse
-      </motion.p>
     {/*</motion.div>*/}
   </>
 );};

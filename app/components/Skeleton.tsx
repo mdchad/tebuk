@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const Skeleton = ({ key, id }: any ) => {
+export const Skeleton = ({ id }: any ) => {
   return (
     <motion.div
       key={id}
