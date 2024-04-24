@@ -14,18 +14,19 @@ export function JuzSettings({ setSettings }: any) {
   function onSubmit() {
     if (secondValue) {
       let randomGenerator = getRandomInt(value, secondValue)
-      setSettings(() => ({ juz: randomGenerator, chapter: 0, page: 0, rangeValue: { mode: 'page', value: [value, secondValue] }}))
+      setSettings(() => ({ juz: randomGenerator, chapter: 0, page: 0, rangeValue: { mode: 'juz', value: [value, secondValue] }}))
     } else {
       setSettings((prev: any) => ({ juz: value, chapter: 0, page: 0, rangeValue: { mode: '', value: [0, 0]} }))
     }
   }
 
+  function addRange() {
+    setRange(true)
+    setSecondValue(value + 1)
+  }
+
   return (
     <TabsContent value="juz">
-      {/*<DrawerHeader>*/}
-      {/*  <DrawerTitle>Review by Juz</DrawerTitle>*/}
-      {/*  <DrawerDescription>Set your juz to review.</DrawerDescription>*/}
-      {/*</DrawerHeader>*/}
       <div className="p-4 pb-0">
         <div className="flex items-center justify-center space-x-2">
           <Button
@@ -40,9 +41,6 @@ export function JuzSettings({ setSettings }: any) {
           </Button>
           <div className="flex-1 items-center text-center">
             <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="number" onChange={(e: any) => setValue(parseInt(e.target.value))} value={value} />
-            {/*<div className="text-2xl font-arabic text-muted-foreground">*/}
-            {/*  {chapters.find(chapter => chapter.id === value)?.name_arabic}*/}
-            {/*</div>*/}
           </div>
           <Button
             variant="outline"
@@ -56,7 +54,7 @@ export function JuzSettings({ setSettings }: any) {
           </Button>
         </div>
         <div className="flex items-center justify-center my-6">
-          { range ? <p className="text-center text-xs font-mono">to</p> :<Button variant="secondary" size="sm" onClick={() => setRange(true)}>Add range</Button> }
+          { range ? <p className="text-center text-xs font-mono">to</p> :<Button variant="secondary" size="sm" onClick={addRange}>Add range</Button> }
         </div>
         <AnimatePresence>
           <motion.div
@@ -73,7 +71,7 @@ export function JuzSettings({ setSettings }: any) {
                   size="icon"
                   className="h-8 w-8 shrink-0 rounded-full"
                   onClick={() => setSecondValue((prevValue) => prevValue - 1)}
-                  disabled={value <= 1}
+                  disabled={secondValue <= value}
                 >
                   <Minus className="h-4 w-4" />
                   <span className="sr-only">Decrease</span>
@@ -95,8 +93,6 @@ export function JuzSettings({ setSettings }: any) {
             )}
           </motion.div>
         </AnimatePresence>
-        {/*<div className="mt-3 h-[80px]">*/}
-        {/*</div>*/}
       </div>
       <div className="flex justify-center gap-2 mt-4">
         <Button size="sm" disabled={range && value > secondValue } onClick={onSubmit}>Submit</Button>

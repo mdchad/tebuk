@@ -2,11 +2,12 @@
 import {AnimatePresence, motion} from "framer-motion";
 import {ChevronFirst, ChevronsRight} from "lucide-react";
 import {Button} from "@/components/ui/button";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {getSpecificVerse, getSurah} from "@/app/store";
 import {useQuery} from "@tanstack/react-query";
 import {Separator} from "@/components/ui/separator";
 import {arabicV1Font} from "@/app/font";
+import {chapter} from "@/lib/chapters";
 
 function getUnicodeCharacter(n: number) {
   const baseHex = 'FC00';
@@ -19,12 +20,22 @@ function getUnicodeCharacter(n: number) {
 
 const Verse = ({ data: verse }: any) => {
   const [verseKey, setVerseKey] = useState("")
+  const [lastAyah, setLastAyah] = useState(false)
   const { data } = useQuery({
     queryKey: ["nextVerse", verseKey],
     queryFn: () => getSpecificVerse(verseKey),
     staleTime: 1000 * 60 * 24,
     enabled: !!verseKey
   });
+
+  useEffect(() => {
+    if (verse) {
+      let a = chapter.find(chap => chap.id === verse.verse.chapter_id)
+      if (a.verses_count === verse.verse.verse_number) {
+        setLastAyah(true)
+      }
+    }
+  }, [verse, setLastAyah])
 
   function getNextVerse() {
     if (verse.verse) {
@@ -106,41 +117,49 @@ const Verse = ({ data: verse }: any) => {
         {/*{verse.verse.code_v1}*/}
         <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
       </p>
-      {!verseKey && (
-        <>
-          <motion.p
-            className="ml-2 mt-12 font-mono text-sm"
-            variants={continuationVariants}
-            initial="initial"
-            animate="animate"
-          >
-            Continue the ayah
-          </motion.p>
-          <motion.p
-            className="ml-2 mb-2 font-mono text-sm"
-            variants={continuationVariants}
-            initial="initial"
-            animate="animate"
-          >
-            or
-          </motion.p>
-        </>
-      )}
-      <AnimatePresence>
-        <motion.div
-          key={verseKey}
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.2 }}
-        >
-          { !verseKey && (
-            <Button className="mr-2 gap-2" size="sm" variant="outline" onClick={getNextVerse}>
-              <ChevronsRight size={18} />
-              <span className="font-mono text-xs">Reveal the next ayah</span>
-            </Button>
-          )}
-        </motion.div>
-      </AnimatePresence>
+      {
+        !lastAyah ? (
+          !verseKey && (
+            <>
+              <motion.p
+                className="ml-2 mt-12 font-mono text-sm"
+                variants={continuationVariants}
+                initial="initial"
+                animate="animate"
+              >
+                Continue the ayah
+              </motion.p>
+              <motion.p
+                className="ml-2 mb-2 font-mono text-sm"
+                variants={continuationVariants}
+                initial="initial"
+                animate="animate"
+              >
+                or
+              </motion.p>
+            </>
+          )
+        ) : <p className="ml-2 mt-12 font-mono text-sm">This is the last ayah of the surah</p>
+      }
+      {
+        !lastAyah ? (
+          <AnimatePresence>
+            <motion.div
+              key={verseKey}
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              { !verseKey && (
+                <Button className="mr-2 gap-2" size="sm" variant="outline" onClick={getNextVerse}>
+                  <ChevronsRight size={18} />
+                  <span className="font-mono text-xs">Reveal the next ayah</span>
+                </Button>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        ) : null
+      }
       <motion.div
         className="py-6"
         key={data?.verse?.id}

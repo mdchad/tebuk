@@ -77,7 +77,7 @@ export function PageSettings({ setSettings }: any) {
                   size="icon"
                   className="h-8 w-8 shrink-0 rounded-full"
                   onClick={() => setSecondValue((prevValue) => prevValue - 1)}
-                  disabled={secondValue < value}
+                  disabled={secondValue <= value}
                 >
                   <Minus className="h-4 w-4" />
                   <span className="sr-only">Decrease</span>
