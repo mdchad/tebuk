@@ -30,7 +30,7 @@ const Verse = ({ data: verse }: any) => {
 
   useEffect(() => {
     if (verse) {
-      let a = chapter.find(chap => chap.id === verse.verse.chapter_id)
+      let a = chapter.find((chap: any) => chap.id === verse.verse.chapter_id)
       if (a.verses_count === verse.verse.verse_number) {
         setLastAyah(true)
       }
@@ -130,7 +130,7 @@ const Verse = ({ data: verse }: any) => {
                 Continue the ayah
               </motion.p>
               <motion.p
-                className="ml-2 mb-2 font-mono text-sm"
+                className="ml-2 mb-2 font-mono text-sm text-gray-400"
                 variants={continuationVariants}
                 initial="initial"
                 animate="animate"
