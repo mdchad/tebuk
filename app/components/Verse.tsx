@@ -23,7 +23,6 @@ const Verse = ({ data: verse }: any) => {
     queryKey: ["nextVerse", verseKey],
     queryFn: () => getSpecificVerse(verseKey),
     staleTime: 1000 * 60 * 24,
-    cacheTime: 1000 * 60 * 24,
     enabled: !!verseKey
   });
 
@@ -115,7 +114,7 @@ const Verse = ({ data: verse }: any) => {
             initial="initial"
             animate="animate"
           >
-            Continue the verse
+            Continue the ayah
           </motion.p>
           <motion.p
             className="ml-2 mb-2 font-mono text-sm"

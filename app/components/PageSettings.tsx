@@ -77,7 +77,7 @@ export function PageSettings({ setSettings }: any) {
                   size="icon"
                   className="h-8 w-8 shrink-0 rounded-full"
                   onClick={() => setSecondValue((prevValue) => prevValue - 1)}
-                  disabled={value <= 1}
+                  disabled={secondValue < value}
                 >
                   <Minus className="h-4 w-4" />
                   <span className="sr-only">Decrease</span>
@@ -90,7 +90,7 @@ export function PageSettings({ setSettings }: any) {
                   size="icon"
                   className="h-8 w-8 shrink-0 rounded-full"
                   onClick={() => setSecondValue((prevValue) => prevValue + 1)}
-                  disabled={value >= 604}
+                  disabled={secondValue >= 604}
                 >
                   <Plus className="h-4 w-4" />
                   <span className="sr-only">Increase</span>
