@@ -31,8 +31,10 @@ const Verse = ({ data: verse }: any) => {
   useEffect(() => {
     if (verse) {
       let a = chapter.find((chap: any) => chap.id === verse.verse.chapter_id)
-      if (a.verses_count === verse.verse.verse_number) {
-        setLastAyah(true)
+      if (a) {
+        if (a?.verses_count === verse.verse.verse_number) {
+          setLastAyah(true)
+        }
       }
     }
   }, [verse, setLastAyah])
