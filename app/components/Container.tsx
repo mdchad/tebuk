@@ -34,7 +34,7 @@ const Container = () => {
   const [revealPage, setRevealPage] = useState<boolean>(false)
   const [clickedShuffle, setClickedShuffle] = useState<boolean>(false)
 
-  function setSettingsValue(value) {
+  function setSettingsValue(value: any) {
     setRevealSurah(false)
     setRevealPage(false)
 
