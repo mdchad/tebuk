@@ -10,8 +10,8 @@ export const getRandomVerse = async ({ chapter, page, juz }: any) => {
     ...(chapter ? { chapter_number: chapter.toString() } : {} ),
     ...(page ? { page_number: page.toString() } : {} ),
     ...(juz ? { juz_number: juz.toString() } : {} ),
-    // words: true.toString(),
-    // word_fields: ['text_imlaei, position'].toString(),
+    words: true.toString(),
+    word_fields: ['text_uthmani, position'].toString(),
     translations: [39].toString(),
   })}`).then(
     (res) => res.json()

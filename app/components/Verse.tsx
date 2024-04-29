@@ -29,6 +29,12 @@ const Verse = ({ data: verse }: any) => {
   });
 
   useEffect(() => {
+    if (data) {
+      window.scrollTo({ behavior: "smooth", top: document.body.scrollHeight })
+    }
+  }, [data])
+
+  useEffect(() => {
     if (verse) {
       let a = chapter.find((chap: any) => chap.id === verse.verse.chapter_id)
       if (a) {
@@ -101,24 +107,24 @@ const Verse = ({ data: verse }: any) => {
     {/*  animate="visible"*/}
     {/*  variants={container}*/}
     {/*>*/}
-      <p lang="ar" dir="rtl" className="font-arabic text-4xl leading-loose">
-        {/*{data.verse.words.sort((a,b) => a.position - b.position).map((text: any, index: number) => {*/}
-        {/*  return (*/}
-        {/*    <>*/}
-        {/*      <motion.span*/}
-        {/*        className="font-arabic"*/}
-        {/*        key={index}*/}
-        {/*        variants={child}>*/}
-        {/*        {text.text_imlaei}*/}
-        {/*      </motion.span>*/}
-        {/*      <span>&nbsp;</span>*/}
-        {/*    </>*/}
-        {/*  )*/}
-        {/*})}*/}
+      <div lang="ar" dir="rtl" className="font-arabicV1 text-4xl leading-loose" style={{ wordSpacing: '0.5rem'}}>
+    {/*    {verse.verse.words.sort((a,b) => a.position - b.position).map((text: any, index: number) => {*/}
+    {/*      return (*/}
+    {/*        <>*/}
+    {/*          <motion.span*/}
+    {/*            className="text-4xl"*/}
+    {/*            key={index}*/}
+    {/*            variants={child}>*/}
+    {/*            {text.text_uthmani}*/}
+    {/*          </motion.span>*/}
+    {/*          <span>&nbsp;</span>*/}
+    {/*        </>*/}
+    {/*      )*/}
+    {/*    })}*/}
         {verse.verse.text_uthmani.replace(/\u{06DF}/gu, "\u{0652}")}
         {/*{verse.verse.code_v1}*/}
         <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
-      </p>
+      </div>
       {
         !lastAyah ? (
           !verseKey && (
@@ -173,7 +179,7 @@ const Verse = ({ data: verse }: any) => {
       { data?.verse && (
         <div className="flex flex-col space-y-6">
           <Separator />
-          <p lang="ar" dir="rtl" className="font-arabic text-4xl leading-loose text-justify">
+          <p lang="ar" dir="rtl" className="font-arabic text-4xl leading-loose" style={{ wordSpacing: '0.5rem'}}>
             {data.verse.text_uthmani.replace(/\u{06DF}/gu, "\u{0652}")}
             <span>{getUnicodeCharacter(data.verse.verse_number)}</span>
           </p>

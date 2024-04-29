@@ -30,6 +30,7 @@ export function SurahSettings({ setSettings }: any) {
       <div className="p-4 pb-0">
         <div className="flex items-center justify-center space-x-2">
           <Combobox setValue={setValue} value={value}/>
+          <Button size="sm" disabled={submitted} onClick={onSubmit}>Start</Button>
           {/*<Button*/}
           {/*  variant="outline"*/}
           {/*  size="icon"*/}
@@ -62,9 +63,8 @@ export function SurahSettings({ setSettings }: any) {
       </div>
       {/*<DrawerFooter>*/}
       {/*  <DrawerClose asChild>*/}
-      <div className="flex justify-center gap-2 mt-4">
-        <Button size="sm" disabled={submitted} onClick={onSubmit}>Start</Button>
-      </div>
+      {/*<div className="flex justify-center gap-2 mt-4">*/}
+      {/*</div>*/}
       {/*  </DrawerClose>*/}
       {/*  <DrawerClose asChild>*/}
       {/*    <Button variant="outline">Cancel</Button>*/}

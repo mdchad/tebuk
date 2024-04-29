@@ -19,17 +19,17 @@ import {
 } from "@/components/ui/popover"
 import { getSurah} from "@/app/store";
 import {useQuery} from "@tanstack/react-query";
-import {useEffect} from "react";
 
 export function Combobox({ setValue, value }: any) {
   const { data: { chapters } } = useQuery({
     queryKey: ["surah"],
     queryFn: () => getSurah(),
-    staleTime: 1000 * 60
+    staleTime: Infinity
   });
 
   const [open, setOpen] = React.useState(false)
 
+  console.log(chapters)
   if (chapters.length) {
     return (
       <Popover open={open} onOpenChange={setOpen}>
