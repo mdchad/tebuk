@@ -152,7 +152,7 @@ const Container = () => {
       ) : null}
       <AnimatePresence>
         <motion.div
-          className="w-full min-h-[50vh]"
+          className="w-full md:min-h-[50vh] min-h-screen"
           key={data?.verse?.id}
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

@@ -6,7 +6,6 @@ import {useEffect, useState} from "react";
 import {getSpecificVerse, getSurah} from "@/app/store";
 import {useQuery} from "@tanstack/react-query";
 import {Separator} from "@/components/ui/separator";
-import {arabicV1Font} from "@/app/font";
 import {chapter} from "@/lib/chapters";
 
 function getUnicodeCharacter(n: number) {
@@ -107,7 +106,7 @@ const Verse = ({ data: verse }: any) => {
     {/*  animate="visible"*/}
     {/*  variants={container}*/}
     {/*>*/}
-      <div lang="ar" dir="rtl" className="font-arabicV1 text-4xl leading-loose" style={{ wordSpacing: '0.5rem'}}>
+      <p lang="ar" dir="rtl" className="font-arabicV1 text-4xl leading-loose">
     {/*    {verse.verse.words.sort((a,b) => a.position - b.position).map((text: any, index: number) => {*/}
     {/*      return (*/}
     {/*        <>*/}
@@ -121,10 +120,10 @@ const Verse = ({ data: verse }: any) => {
     {/*        </>*/}
     {/*      )*/}
     {/*    })}*/}
-        {verse.verse.text_uthmani.replace(/\u{06DF}/gu, "\u{0652}")}
+        {verse.verse.qpc_uthmani_hafs}
         {/*{verse.verse.code_v1}*/}
-        <span>{getUnicodeCharacter(verse.verse.verse_number)}</span>
-      </div>
+        {/*<span>{getUnicodeCharacter(verse.verse.verse_number)}</span>*/}
+      </p>
       {
         !lastAyah ? (
           !verseKey && (
@@ -159,7 +158,7 @@ const Verse = ({ data: verse }: any) => {
               transition={{ duration: 0.2 }}
             >
               { !verseKey && (
-                <Button className="mr-2 gap-2" size="sm" variant="outline" onClick={getNextVerse}>
+                <Button className="mr-2 gap-2 border-[#5afac5] hover:bg-[#5afac5]/20" size="sm" variant="outline" onClick={getNextVerse}>
                   <ChevronsRight size={18} />
                   <span className="font-mono text-xs">Reveal the next ayah</span>
                 </Button>
@@ -179,9 +178,8 @@ const Verse = ({ data: verse }: any) => {
       { data?.verse && (
         <div className="flex flex-col space-y-6">
           <Separator />
-          <p lang="ar" dir="rtl" className="font-arabic text-4xl leading-loose" style={{ wordSpacing: '0.5rem'}}>
-            {data.verse.text_uthmani.replace(/\u{06DF}/gu, "\u{0652}")}
-            <span>{getUnicodeCharacter(data.verse.verse_number)}</span>
+          <p lang="ar" dir="rtl" className="font-arabicV1 text-4xl leading-loose">
+            {data.verse.qpc_uthmani_hafs}
           </p>
         </div>
       )}
