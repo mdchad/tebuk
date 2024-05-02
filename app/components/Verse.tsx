@@ -97,7 +97,8 @@ const Verse = ({ data: verse }: any) => {
       opacity: 1,
       transition: { delay: totalAnimationTime }
     },
-  };
+    exit: { x: 100, opacity: 0 }
+};
 
   return (
     <>
@@ -124,6 +125,8 @@ const Verse = ({ data: verse }: any) => {
         {/*{verse.verse.code_v1}*/}
         {/*<span>{getUnicodeCharacter(verse.verse.verse_number)}</span>*/}
       </p>
+      <AnimatePresence>
+
       {
         !lastAyah ? (
           !verseKey && (
@@ -133,6 +136,7 @@ const Verse = ({ data: verse }: any) => {
                 variants={continuationVariants}
                 initial="initial"
                 animate="animate"
+                exit="exit"
               >
                 Continue the ayah
               </motion.p>
@@ -141,6 +145,7 @@ const Verse = ({ data: verse }: any) => {
                 variants={continuationVariants}
                 initial="initial"
                 animate="animate"
+                exit="exit"
               >
                 or
               </motion.p>
@@ -148,31 +153,32 @@ const Verse = ({ data: verse }: any) => {
           )
         ) : <p className="ml-2 mt-12 font-mono text-sm">This is the last ayah of the surah</p>
       }
+      </AnimatePresence>
+      <AnimatePresence>
       {
         !lastAyah ? (
-          <AnimatePresence>
             <motion.div
               key={verseKey}
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.2 }}
+              exit={{ x: 100, opacity: 0 }}
             >
               { !verseKey && (
-                <Button className="mr-2 gap-2 border-[#5afac5] hover:bg-[#5afac5]/20" size="sm" variant="outline" onClick={getNextVerse}>
+                <Button className="mr-2 gap-2 border-[#5afac5] bg-[#5afac5]/20 hover:bg-[#5afac5]/60" size="sm" variant="outline" onClick={getNextVerse}>
                   <ChevronsRight size={18} />
                   <span className="font-mono text-xs">Reveal the next ayah</span>
                 </Button>
               )}
             </motion.div>
-          </AnimatePresence>
         ) : null
       }
+      </AnimatePresence>
       <motion.div
         className="py-6"
         key={data?.verse?.id}
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        // exit={{ y: -10, opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
       { data?.verse && (
