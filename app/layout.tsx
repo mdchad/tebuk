@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Raleway } from "next/font/google";
 import "./globals.css";
 import Providers from "@/app/provider";
+import Script from 'next/script'
 
 import {arabicFont, ayahFont, arabicV1Font} from "@/app/font";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
     <html lang="en" className={`${raleway.variable} ${arabicFont.variable} ${ayahFont.variable} ${arabicV1Font.variable}`}>
       <body className={inter.className}>
         <Providers>{children}</Providers>
+        <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />
       </body>
     </html>
   );
