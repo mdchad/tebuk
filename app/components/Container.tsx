@@ -22,12 +22,6 @@ interface ISettings {
   }
 }
 
-const mapping: any = {
-  chapter: 'surah',
-  page: 'page',
-  juz: 'juz'
-}
-
 const Container = () => {
   const [settings, setSettings] = useState<ISettings>({ chapter: 0, page: 0, juz: 0, rangeValue: { mode: '', value: [0, 0]} })
   const [revealSurah, setRevealSurah] = useState<boolean>(false)

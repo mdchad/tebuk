@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: process.env.NODE_ENV === 'production' ? 'https://www.tebuk.app/api/og' : 'http://localhost:3000/api/og',
     title: 'tebuk.',
-    description: 'Strengthen your memory',
+    description: 'Quran memorization tool to help strengthen your memory',
   },
 };
 
