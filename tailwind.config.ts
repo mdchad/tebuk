@@ -21,6 +21,7 @@ const config = {
         arabicV1: ['var(--font-arabicV1)'],
         ayah: ['var(--font-ayah)'],
         raleway: ['var(--font-raleway)'],
+        caveat: ['var(--font-caveat)'],
       },
       colors: {
         border: "hsl(var(--border))",

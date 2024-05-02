@@ -11,7 +11,7 @@ export async function GET() {
   );
 
   const text = 't.'
-  const fontData = await loadGoogleFont('Raleway', 't.');
+  const fontData = await loadGoogleFont('Caveat', 't.');
 
   return new ImageResponse(
     (
@@ -19,7 +19,7 @@ export async function GET() {
         style={{
           fontSize: 80,
           fontWeight: 700,
-          fontFamily: 'Raleway',
+          fontFamily: 'Caveat',
           color: 'black',
           background: 'white',
           width: '100%',
