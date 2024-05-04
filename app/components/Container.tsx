@@ -115,7 +115,7 @@ const Container = () => {
           </div>
         ) : <div></div>}
         <div>
-          <Button size="sm" className="bg-[#5afac5] hover:bg-[#5afac5]/70" disabled={!data} onClick={() => setShuffle()}><Shuffle size={20} color={'black'}/></Button>
+          <Button size="sm" className="shadow-xl bg-[#5afac5] hover:bg-[#5afac5]/70" disabled={!data} onClick={() => setShuffle()}><Shuffle size={20} color={'black'}/></Button>
         </div>
       </div>
     );

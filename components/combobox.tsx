@@ -29,7 +29,6 @@ export function Combobox({ setValue, value }: any) {
 
   const [open, setOpen] = React.useState(false)
 
-  console.log(chapters)
   if (chapters.length) {
     return (
       <Popover open={open} onOpenChange={setOpen}>
