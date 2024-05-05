@@ -95,7 +95,7 @@ export function PageSettings({ setSettings }: any) {
                     <span className="sr-only">Increase</span>
                   </Button>
                 </div>
-                <Button className="rounded-xl self-end text-xs" variant="ghost" size="xs" onClick={removeRange}><XIcon size="16"/>Remove</Button>
+                <Button className="rounded-xl text-red-400 hover:text-red-600 hover:bg-white self-end p-0 text-xs" variant="ghost" size="sm" onClick={removeRange}><XIcon size="16"/>Remove</Button>
               </div>
             )}
           </motion.div>

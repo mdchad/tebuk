@@ -95,7 +95,7 @@ export function JuzSettings({ setSettings }: any) {
                     <span className="sr-only">Increase</span>
                   </Button>
                 </div>
-                <Button className="rounded-xl self-end text-xs" variant="ghost" size="xs" onClick={removeRange}><XIcon size="16"/>Remove</Button>
+                <Button className="text-red-400 hover:text-red-600 hover:bg-white  rounded-xl self-end text-xs" variant="ghost" onClick={removeRange}><XIcon size="16"/>Remove</Button>
               </div>
             )}
           </motion.div>
