@@ -82,7 +82,7 @@ export function JuzSettings({ setSettings }: any) {
                     <span className="sr-only">Decrease</span>
                   </Button>
                   <div className="flex-1 items-center text-center">
-                    <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="number" onChange={(e: any) => setSecondValue(parseInt(e.target.value))} value={secondValue}/>
+                    <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" inputMode="numeric" min={1} max={30} type="number" onChange={(e: any) => setSecondValue(parseInt(e.target.value))} value={secondValue}/>
                   </div>
                   <Button
                     variant="outline"
