@@ -21,7 +21,7 @@ export function PageSettings({ setSettings }: any) {
     }
   }
 
-  function validateFirstValue(e) {
+  function validateFirstValue(e: any) {
     setValue(parseInt(e.target.value))
     if (parseInt(e.target.value) > 0 && parseInt(e.target.value) < 604) {
       setError(false)
@@ -30,7 +30,7 @@ export function PageSettings({ setSettings }: any) {
     }
   }
 
-  function validateSecondValue(e) {
+  function validateSecondValue(e: any) {
     setSecondValue(parseInt(e.target.value))
     if (parseInt(e.target.value) > value && parseInt(e.target.value) < 604) {
       setError(false)
