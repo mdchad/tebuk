@@ -8,6 +8,7 @@ import {AnimatePresence, motion} from "framer-motion";
 
 export function JuzSettings({ setSettings }: any) {
   const [value, setValue] = React.useState(1)
+  const [error, setError] = React.useState(false)
   const [secondValue, setSecondValue] = React.useState(0)
   const [range, setRange] = React.useState(false)
 
@@ -17,6 +18,24 @@ export function JuzSettings({ setSettings }: any) {
       setSettings(() => ({ juz: randomGenerator, chapter: 0, page: 0, rangeValue: { mode: 'juz', value: [value, secondValue] }}))
     } else {
       setSettings((prev: any) => ({ juz: value, chapter: 0, page: 0, rangeValue: { mode: '', value: [0, 0]} }))
+    }
+  }
+
+  function validateFirstValue(e) {
+    setValue(parseInt(e.target.value))
+    if (parseInt(e.target.value) > 0 && parseInt(e.target.value) < 31) {
+      setError(false)
+    } else {
+      setError(true)
+    }
+  }
+
+  function validateSecondValue(e) {
+    setSecondValue(parseInt(e.target.value))
+    if (parseInt(e.target.value) > value && parseInt(e.target.value) < 31) {
+      setError(false)
+    } else {
+      setError(true)
     }
   }
 
@@ -45,7 +64,7 @@ export function JuzSettings({ setSettings }: any) {
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 items-center text-center">
-            <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="number" inputMode="numeric" min={1} max={30} onChange={(e: any) => setValue(parseInt(e.target.value))} value={value} />
+            <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="number" inputMode="numeric" min={1} max={30} onChange={(e: any) => validateFirstValue(e)} value={value} />
           </div>
           <Button
             variant="outline"
@@ -69,40 +88,41 @@ export function JuzSettings({ setSettings }: any) {
             transition={{ duration: 0.3 }}
           >
             {range && (
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col">
                 <div className="flex items-center justify-center space-x-2">
                   <Button
                     variant="outline"
                     size="icon"
                     className="h-8 w-8 shrink-0 rounded-full"
                     onClick={() => setSecondValue((prevValue) => prevValue - 1)}
-                    disabled={secondValue <= value}
+                    disabled={secondValue <= value || secondValue === value + 1}
                   >
                     <Minus className="h-4 w-4" />
                     <span className="sr-only">Decrease</span>
                   </Button>
                   <div className="flex-1 items-center text-center">
-                    <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" inputMode="numeric" min={1} max={30} type="number" onChange={(e: any) => setSecondValue(parseInt(e.target.value))} value={secondValue}/>
+                    <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" inputMode="numeric" min={1} max={30} type="number" onChange={(e: any) => validateSecondValue(e)} value={secondValue}/>
                   </div>
                   <Button
                     variant="outline"
                     size="icon"
                     className="h-8 w-8 shrink-0 rounded-full"
                     onClick={() => setSecondValue((prevValue) => prevValue + 1)}
-                    disabled={value >= 30}
+                    disabled={secondValue >= 30}
                   >
                     <Plus className="h-4 w-4" />
                     <span className="sr-only">Increase</span>
                   </Button>
                 </div>
-                <Button className="text-red-400 hover:text-red-600 hover:bg-white  rounded-xl self-end text-xs" variant="ghost" onClick={removeRange}><XIcon size="16"/>Remove</Button>
+                <Button className="text-red-400 hover:text-red-600 hover:bg-white p-0 rounded-xl self-end text-xs" variant="ghost" onClick={removeRange}><XIcon size="16"/>Remove</Button>
               </div>
             )}
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="flex justify-center gap-2 mt-4">
-        <Button size="sm" disabled={range && value > secondValue } onClick={onSubmit}>Submit</Button>
+      <div className="flex flex-col justify-center gap-2 mt-4">
+        <Button size="sm" disabled={error || (range && value > secondValue)} onClick={onSubmit}>Submit</Button>
+        { error && <p className="text-center text-xs text-red-400">Juz can only be between 1 and 30</p>}
       </div>
     </TabsContent>
   )

@@ -36,6 +36,7 @@ const Container = () => {
   }
 
   function setShuffle() {
+    window.scrollTo({ behavior: "smooth", top: 0 })
     setRevealSurah(false)
     setRevealPage(false)
     setClickedShuffle(true)
