@@ -67,6 +67,7 @@ export function Combobox({ setValue, value }: any) {
                       )}
                     />
                     {framework.name_simple}
+                    <span dir="rtl" className="ml-auto font-arabicV1">{framework.name_arabic}</span>
                   </CommandItem>
                 ))}
               </CommandGroup>

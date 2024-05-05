@@ -23,11 +23,11 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "tebuk.",
+  title: "tebuk. | Practice Daily with Random Verses",
   description: "Quran memorization tool to help strengthen your memory",
   openGraph: {
     images: process.env.NODE_ENV === 'production' ? 'https://www.tebuk.app/api/og' : 'http://localhost:3000/api/og',
-    title: 'tebuk.',
+    title: 'tebuk. | Practice Daily with Random Verses',
     description: 'Quran memorization tool to help strengthen your memory',
   },
 };

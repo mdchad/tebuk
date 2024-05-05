@@ -2,7 +2,7 @@ import {DrawerClose, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle}
 import {Button} from "@/components/ui/button";
 import {TabsContent} from "@/components/ui/tabs";
 import * as React from "react";
-import {Minus, Plus } from "lucide-react"
+import {Minus, Plus, XIcon} from "lucide-react"
 import {getRandomInt} from "@/lib/utils";
 import {AnimatePresence, motion} from "framer-motion";
 
@@ -25,12 +25,13 @@ export function PageSettings({ setSettings }: any) {
     setSecondValue(value + 1)
   }
 
+  function removeRange() {
+    setRange(false)
+    setSecondValue(0)
+  }
+
   return (
     <TabsContent value="page">
-      {/*<DrawerHeader>*/}
-      {/*  <DrawerTitle>Review by Page</DrawerTitle>*/}
-      {/*  <DrawerDescription>Set your page to review.</DrawerDescription>*/}
-      {/*</DrawerHeader>*/}
       <div className="p-4 pb-0">
         <div className="flex items-center justify-center space-x-2">
           <Button
@@ -45,9 +46,6 @@ export function PageSettings({ setSettings }: any) {
           </Button>
           <div className="flex-1 items-center text-center">
             <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="number" onChange={(e: any) => setValue(parseInt(e.target.value))} value={value}/>
-            {/*<div className="text-2xl font-arabic text-muted-foreground">*/}
-            {/*  {chapters.find(chapter => chapter.id === value)?.name_arabic}*/}
-            {/*</div>*/}
           </div>
           <Button
             variant="outline"
@@ -71,30 +69,33 @@ export function PageSettings({ setSettings }: any) {
             transition={{ duration: 0.3 }}
           >
             {range && (
-              <div className="flex items-center justify-center space-x-2">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-8 w-8 shrink-0 rounded-full"
-                  onClick={() => setSecondValue((prevValue) => prevValue - 1)}
-                  disabled={secondValue <= value}
-                >
-                  <Minus className="h-4 w-4" />
-                  <span className="sr-only">Decrease</span>
-                </Button>
-                <div className="flex-1 items-center text-center">
-                  <input className="text-4xl text-center font-bold tracking-tighter w-40" type="number" onChange={(e: any) => setSecondValue(parseInt(e.target.value))} value={secondValue}/>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-center space-x-2">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-8 w-8 shrink-0 rounded-full"
+                    onClick={() => setSecondValue((prevValue) => prevValue - 1)}
+                    disabled={secondValue <= value}
+                  >
+                    <Minus className="h-4 w-4" />
+                    <span className="sr-only">Decrease</span>
+                  </Button>
+                  <div className="flex-1 items-center text-center">
+                    <input className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="number" inputMode="numeric" min={1} max={30} onChange={(e: any) => setSecondValue(parseInt(e.target.value))} value={secondValue}/>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-8 w-8 shrink-0 rounded-full"
+                    onClick={() => setSecondValue((prevValue) => prevValue + 1)}
+                    disabled={secondValue >= 604}
+                  >
+                    <Plus className="h-4 w-4" />
+                    <span className="sr-only">Increase</span>
+                  </Button>
                 </div>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-8 w-8 shrink-0 rounded-full"
-                  onClick={() => setSecondValue((prevValue) => prevValue + 1)}
-                  disabled={secondValue >= 604}
-                >
-                  <Plus className="h-4 w-4" />
-                  <span className="sr-only">Increase</span>
-                </Button>
+                <Button className="rounded-xl self-end text-xs" variant="ghost" size="xs" onClick={removeRange}><XIcon size="16"/>Remove</Button>
               </div>
             )}
           </motion.div>
