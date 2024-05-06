@@ -38,7 +38,7 @@ export async function GET() {
       height: 630,
       fonts: [
         {
-          name: "Raleway",
+          name: "Caveat",
           data: fontData,
           style: "normal",
         },
