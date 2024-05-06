@@ -42,7 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${caveat.variable} ${raleway.variable} ${arabicFont.variable} ${ayahFont.variable} ${arabicV1Font.variable}`}>
-      <body className={inter.className}>
+    <head>
+      <link rel="icon" href="http://www.tebuk.app/icon.ico" />
+    </head>
+    <body className={inter.className}>
         <Providers>{children}</Providers>
         <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />
       </body>
