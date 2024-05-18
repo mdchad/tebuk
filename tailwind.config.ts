@@ -20,6 +20,7 @@ const config = {
         arabic: ['var(--font-arabic)'],
         arabicV1: ['var(--font-arabicV1)'],
         ayah: ['var(--font-ayah)'],
+        surah: ['var(--font-surah)'],
         raleway: ['var(--font-raleway)'],
         caveat: ['var(--font-caveat)'],
       },

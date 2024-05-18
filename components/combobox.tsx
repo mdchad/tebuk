@@ -17,19 +17,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { getSurah} from "@/app/store";
-import {useQuery} from "@tanstack/react-query";
+import { chapter as chapters } from '../lib/chapters'
 
 export function Combobox({ setValue, value }: any) {
-  const { data: { chapters } } = useQuery({
-    queryKey: ["surah"],
-    queryFn: () => getSurah(),
-    staleTime: Infinity
-  });
-
   const [open, setOpen] = React.useState(false)
 
-  if (chapters.length) {
     return (
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
@@ -51,23 +43,23 @@ export function Combobox({ setValue, value }: any) {
             <CommandList>
               <CommandEmpty>No surah found.</CommandEmpty>
               <CommandGroup>
-                {chapters.map((framework: any) => (
+                {chapters.map((chapter: any) => (
                   <CommandItem
-                    key={framework.id}
-                    value={framework.id}
+                    key={chapter.id}
+                    value={chapter.id}
                     onSelect={() => {
-                      setValue(framework.id === value ? "" : framework.id)
+                      setValue(chapter.id === value ? "" : chapter.id)
                       setOpen(false)
                     }}
                   >
                     <Check
                       className={cn(
                         "mr-2 h-4 w-4",
-                        value === framework.id ? "opacity-100" : "opacity-0"
+                        value === chapter.id ? "opacity-100" : "opacity-0"
                       )}
                     />
-                    {framework.name_simple}
-                    <span dir="rtl" className="ml-auto font-arabicV1">{framework.name_arabic}</span>
+                    {chapter.name_simple}
+                    <span dir="rtl" className="ml-auto font-surah text-lg">{chapter.id.toString().padStart(3, '0')}</span>
                   </CommandItem>
                 ))}
               </CommandGroup>
@@ -76,5 +68,4 @@ export function Combobox({ setValue, value }: any) {
         </PopoverContent>
       </Popover>
     )
-  }
 }

@@ -24,6 +24,15 @@ export const ayahFont = localFont(
   }
 )
 
+export const surahFont = localFont(
+  {
+    src: [{ path: '../public/fonts/surah-names/v1/sura_names.woff2' }],
+    display: 'swap',
+    variable: '--font-surah',
+  }
+)
+
+
 
 // export const arabicSymbolFont = localFont(
 //   {

@@ -4,7 +4,7 @@ import "./globals.css";
 import Providers from "@/app/provider";
 import Script from 'next/script'
 
-import {arabicFont, ayahFont, arabicV1Font} from "@/app/font";
+import {arabicFont, ayahFont, arabicV1Font, surahFont} from "@/app/font";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -41,10 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${caveat.variable} ${raleway.variable} ${arabicFont.variable} ${ayahFont.variable} ${arabicV1Font.variable}`}>
-    <head>
-      <link rel="icon" href="http://www.tebuk.app/icon.ico" />
-    </head>
+    <html lang="en" className={`${surahFont.variable} ${caveat.variable} ${raleway.variable} ${arabicFont.variable} ${ayahFont.variable} ${arabicV1Font.variable}`}>
     <body className={inter.className}>
         <Providers>{children}</Providers>
         <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />
