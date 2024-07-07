@@ -103,28 +103,15 @@ const Verse = ({ data: verse }: any) => {
 
   return (
     <>
-    {/* <motion.div*/}
-    {/*  initial="hidden"*/}
-    {/*  animate="visible"*/}
-    {/*  variants={container}*/}
-    {/*>*/}
-      <WordFadeIn words={verse.verse.qpc_uthmani_hafs} delay={0.08} lang="ar" dir="rtl" className="font-arabicV1 text-4xl leading-loose"/>
-    {/*    {verse.verse.words.sort((a,b) => a.position - b.position).map((text: any, index: number) => {*/}
-    {/*      return (*/}
-    {/*        <>*/}
-    {/*          <motion.span*/}
-    {/*            className="text-4xl"*/}
-    {/*            key={index}*/}
-    {/*            variants={child}>*/}
-    {/*            {text.text_uthmani}*/}
-    {/*          </motion.span>*/}
-    {/*          <span>&nbsp;</span>*/}
-    {/*        </>*/}
-    {/*      )*/}
-    {/*    })}*/}
-    {/*    {verse.verse.qpc_uthmani_hafs}*/}
-        {/*{verse.verse.code_v1}*/}
-        {/*<span>{getUnicodeCharacter(verse.verse.verse_number)}</span>*/}
+      <WordFadeIn words={verse.verse.qpc_uthmani_hafs} delay={0.08} className="font-arabicV1 text-4xl leading-loose"/>
+      <div>
+        { data?.verse && (
+          <div className="flex flex-col space-y-6">
+            <Separator />
+            <WordFadeIn className="font-arabicV1 text-4xl leading-loose" words={data.verse.qpc_uthmani_hafs}/>
+          </div>
+        )}
+      </div>
       <AnimatePresence>
       {
         !lastAyah ? (
@@ -173,23 +160,6 @@ const Verse = ({ data: verse }: any) => {
         ) : null
       }
       </AnimatePresence>
-      {/*<motion.div*/}
-      {/*  className="py-6"*/}
-      {/*  key={data?.verse?.id}*/}
-      {/*  initial={{ y: 10, opacity: 0 }}*/}
-      {/*  animate={{ y: 0, opacity: 1 }}*/}
-      {/*  transition={{ duration: 0.5 }}*/}
-      {/*>*/}
-      <div>
-        { data?.verse && (
-          <div className="flex flex-col space-y-6">
-            <Separator />
-            <WordFadeIn lang="ar" dir="rtl" delay={0.08} className="font-arabicV1 text-4xl leading-loose" words={data.verse.qpc_uthmani_hafs}/>
-          </div>
-        )}
-      </div>
-      {/*</motion.div>*/}
-    {/*</motion.div>*/}
   </>
 );};
 
