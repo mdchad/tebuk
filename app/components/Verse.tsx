@@ -7,6 +7,7 @@ import {getSpecificVerse, getSurah} from "@/app/store";
 import {useQuery} from "@tanstack/react-query";
 import {Separator} from "@/components/ui/separator";
 import {chapter} from "@/lib/chapters";
+import WordFadeIn from "@/components/magicui/word-fade-in";
 
 function getUnicodeCharacter(n: number) {
   const baseHex = 'FC00';
@@ -107,7 +108,7 @@ const Verse = ({ data: verse }: any) => {
     {/*  animate="visible"*/}
     {/*  variants={container}*/}
     {/*>*/}
-      <p lang="ar" dir="rtl" className="font-arabicV1 text-4xl leading-loose">
+      <WordFadeIn words={verse.verse.qpc_uthmani_hafs} delay={0.08} lang="ar" dir="rtl" className="font-arabicV1 text-4xl leading-loose"/>
     {/*    {verse.verse.words.sort((a,b) => a.position - b.position).map((text: any, index: number) => {*/}
     {/*      return (*/}
     {/*        <>*/}
@@ -121,12 +122,10 @@ const Verse = ({ data: verse }: any) => {
     {/*        </>*/}
     {/*      )*/}
     {/*    })}*/}
-        {verse.verse.qpc_uthmani_hafs}
+    {/*    {verse.verse.qpc_uthmani_hafs}*/}
         {/*{verse.verse.code_v1}*/}
         {/*<span>{getUnicodeCharacter(verse.verse.verse_number)}</span>*/}
-      </p>
       <AnimatePresence>
-
       {
         !lastAyah ? (
           !verseKey && (
@@ -167,29 +166,29 @@ const Verse = ({ data: verse }: any) => {
               { !verseKey && (
                 <Button className="mr-2 gap-2 border-[#5afac5] bg-[#5afac5]/20 hover:bg-[#5afac5]/60" size="sm" variant="outline" onClick={getNextVerse}>
                   <ChevronsRight size={18} />
-                  <span className="font-mono text-xs">Reveal the next ayah</span>
+                  <span className="font-mono text-xs">Peek the next ayah</span>
                 </Button>
               )}
             </motion.div>
         ) : null
       }
       </AnimatePresence>
-      <motion.div
-        className="py-6"
-        key={data?.verse?.id}
-        initial={{ y: 10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-      { data?.verse && (
-        <div className="flex flex-col space-y-6">
-          <Separator />
-          <p lang="ar" dir="rtl" className="font-arabicV1 text-4xl leading-loose">
-            {data.verse.qpc_uthmani_hafs}
-          </p>
-        </div>
-      )}
-      </motion.div>
+      {/*<motion.div*/}
+      {/*  className="py-6"*/}
+      {/*  key={data?.verse?.id}*/}
+      {/*  initial={{ y: 10, opacity: 0 }}*/}
+      {/*  animate={{ y: 0, opacity: 1 }}*/}
+      {/*  transition={{ duration: 0.5 }}*/}
+      {/*>*/}
+      <div>
+        { data?.verse && (
+          <div className="flex flex-col space-y-6">
+            <Separator />
+            <WordFadeIn lang="ar" dir="rtl" delay={0.08} className="font-arabicV1 text-4xl leading-loose" words={data.verse.qpc_uthmani_hafs}/>
+          </div>
+        )}
+      </div>
+      {/*</motion.div>*/}
     {/*</motion.div>*/}
   </>
 );};
