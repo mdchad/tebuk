@@ -6,10 +6,6 @@ import {loadGoogleFont} from "@/lib/utils";
 export const runtime = 'edge';
 
 export async function GET() {
-  const font1 = await fetch(
-    new URL("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap", import.meta.url)
-  );
-
   const text = 't.'
   const fontData = await loadGoogleFont('Caveat', 't.');
 
