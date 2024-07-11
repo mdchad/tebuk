@@ -63,24 +63,24 @@ const Container = () => {
 
   const HintBar = () => {
     return (
-      <div className="fixed bottom-20 left-0 w-full flex justify-end">
+      <div className="fixed bottom-20 right-0">
         <div className="w-1/6 md:w-1/12 flex flex-col items-center">
-            <p className="font-mono text-black text-[10px]">Shuffle</p>
-            <p className="font-mono text-black text-[10px]">ayah</p>
-            <div className="flex items-end">
-              <motion.div
-                animate={{
-                  y: ["5px", "0rem", "5px"],
-                }}
-                transition={{
-                  duration: 0.8,
-                  ease: "easeOut",
-                  repeat: Infinity
-                }}
-              >
-                <Arrow />
-              </motion.div>
-            </div>
+          <p className="font-mono text-black text-[10px]">Shuffle</p>
+          <p className="font-mono text-black text-[10px]">ayah</p>
+          <div className="flex items-end">
+            <motion.div
+              animate={{
+                y: ["5px", "0rem", "5px"],
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+                repeat: Infinity
+              }}
+            >
+              <Arrow />
+            </motion.div>
+          </div>
         </div>
       </div>
     );
