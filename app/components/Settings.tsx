@@ -15,7 +15,7 @@ import {JuzSettings} from "@/app/components/JuzSettings";
 
 export function Settings({ setSettings }: any) {
   return (
-    <div className="rounded-xl border px-8 pb-6 mx-auto w-80 max-w-sm">
+    <div className="rounded-xl border px-8 pb-6 mx-auto w-full max-w-sm">
       <Tabs defaultValue="surah" className="mt-3">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="surah">Surah</TabsTrigger>
