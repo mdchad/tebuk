@@ -17,7 +17,9 @@ export default async function Home() {
   return (
     <>
       <header className="text-center mt-4">
-        <p className="font-caveat text-7xl">tebuk.</p>
+        <p className="font-caveat text-7xl group">tebuk<span className="group-hover:text-[#5afac5]">.</span></p>
+        <p className="text-[10px]">Build by <a href="http://pixelmindstudio.co" className="underline hover:decoration-[#5afac5] underline-offset-4
+">Pixelmind Studio</a></p>
       </header>
       <main className="flex w-full flex-col items-center px-8 py-2 lg:p-24">
         <Hydrate state={dehydratedState}>
