@@ -24,16 +24,36 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.tebuk.app'),
-  title: "tebuk. | Practice Daily with Random Verses",
-  description: "Step up your Quran learning with our memorization tool. Generate random verses to memorize and recite, improving fluency over time",
+  title: "tebuk. — Ulangkaji Hafazan Al-Quran | Quran Memorization Tool",
+  description: "Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free hifz practice tool — pick a surah, page, or juz and recite from memory.",
+  keywords: ['tebuk', 'tebuk hafazan', 'ulangkaji hafazan', 'hafazan al-quran', 'hifz', 'quran memorization', 'tebuk ayat', 'latihan hafazan'],
   openGraph: {
-    // images: process.env.NODE_ENV === 'production' ? 'https://www.tebuk.app/api/og' : 'http://localhost:3000/api/og',
-    // images: '',
-    title: 'tebuk. | Practice Daily with Random Verses',
-    description: 'Step up your Quran learning with our memorization tool. Generate random verses to memorize and recite, improving fluency over time',
+    images: 'https://www.tebuk.app/api/og',
+    title: 'tebuk. — Ulangkaji Hafazan Al-Quran | Quran Memorization Tool',
+    description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free hifz practice tool — pick a surah, page, or juz and recite from memory.',
+    url: 'https://www.tebuk.app',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'tebuk. — Ulangkaji Hafazan Al-Quran | Quran Memorization Tool',
+    description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free hifz practice tool — pick a surah, page, or juz and recite from memory.',
+    images: ['https://www.tebuk.app/api/og'],
   },
 };
 
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'tebuk.',
+  url: 'https://www.tebuk.app',
+  description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free hifz practice tool — pick a surah, page, or juz and recite from memory.',
+  applicationCategory: 'EducationApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  inLanguage: ['en', 'ms', 'ar'],
+};
 
 export default function RootLayout({
   children,
@@ -43,6 +63,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${surahFont.variable} ${caveat.variable} ${raleway.variable} ${arabicFont.variable} ${ayahFont.variable} ${arabicV1Font.variable}`}>
     <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Providers>{children}</Providers>
         <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />
       </body>
