@@ -22,7 +22,7 @@ export default async function Home() {
           <h1 className="font-caveat text-7xl group">tebuk<span className="group-hover:text-[#5afac5]">.</span></h1>
           <AboutDialog />
         </div>
-        <p className="text-[10px]">Build by <a href="https://pixelmindstudio.co" className="underline hover:decoration-[#5afac5] underline-offset-4">Pixelmind Studio</a></p>
+        {/*<p className="text-[10px] text-neutral-400">Build by <a href="https://pixelmindstudio.co" className="underline hover:decoration-[#5afac5] underline-offset-4">Pixelmind Studio</a></p>*/}
       </header>
       <main className="flex w-full flex-col items-center px-8 py-2 lg:p-24">
         <Hydrate state={dehydratedState}>
