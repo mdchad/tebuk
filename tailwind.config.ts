@@ -1,3 +1,5 @@
+import {firstFont} from "@/app/font";
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -20,6 +22,7 @@ const config = {
         arabic: ['var(--font-arabic)'],
         arabicV1: ['var(--font-arabicV1)'],
         ayah: ['var(--font-ayah)'],
+        first: ['var(--font-first)'],
         surah: ['var(--font-surah)'],
         raleway: ['var(--font-raleway)'],
         caveat: ['var(--font-caveat)'],

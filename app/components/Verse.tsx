@@ -124,7 +124,7 @@ const Verse = ({ data: verse }: any) => {
                 animate="animate"
                 exit="exit"
               >
-                Continue the ayah
+                Continue the verse
               </motion.p>
               <motion.p
                 className="ml-2 mb-2 font-mono text-sm text-gray-400"
@@ -153,7 +153,7 @@ const Verse = ({ data: verse }: any) => {
               { !verseKey && (
                 <Button className="mr-2 gap-2 border-[#5afac5] bg-[#5afac5]/20 hover:bg-[#5afac5]/60" size="sm" variant="outline" onClick={getNextVerse}>
                   <ChevronsRight size={18} />
-                  <span className="font-mono text-xs">Peek the next ayah</span>
+                  <span className="font-mono text-xs">Peek the next verse</span>
                 </Button>
               )}
             </motion.div>

@@ -66,7 +66,7 @@ const Container = () => {
       <div className="fixed bottom-20 right-0">
         <div className="w-1/6 md:w-1/12 flex flex-col items-center">
           <p className="font-mono text-black text-[10px]">Shuffle</p>
-          <p className="font-mono text-black text-[10px]">ayah</p>
+          <p className="font-mono text-black text-[10px]">verse</p>
           <div className="flex items-end">
             <motion.div
               animate={{

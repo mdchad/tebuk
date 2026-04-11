@@ -32,6 +32,14 @@ export const surahFont = localFont(
   }
 )
 
+export const firstFont = localFont(
+  {
+    src: [{ path: '../public/fonts/QPC-V1-Font/p1.ttf' }],
+    display: 'swap',
+    variable: '--font-first',
+  }
+)
+
 
 
 // export const arabicSymbolFont = localFont(
