@@ -78,6 +78,13 @@ export function Combobox({ setValue, value }: any) {
     ? chapters.find((c: any) => c.id === value)?.name_simple
     : "Select surah..."
 
+  if (isDesktop === null) return (
+    <Button variant="outline" className="w-[150px] justify-between" disabled>
+      {triggerLabel}
+      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+    </Button>
+  )
+
   if (isDesktop) {
     return (
       <Popover open={open} onOpenChange={handleOpenChange}>

@@ -64,7 +64,7 @@ export function PageSettings({ setSettings }: any) {
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 items-center text-center">
-            <input aria-label="Page number" className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="text" inputMode="numeric" pattern="[0-9]*" enterKeyHint="done" min={1} max={604} onChange={(e: any) => validateFirstValue(e)} value={value}/>
+            <input aria-label="Page number" className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="text" inputMode="numeric" pattern="[0-9]*" enterKeyHint="done" onChange={(e: any) => validateFirstValue(e)} value={value}/>
           </div>
           <Button
             variant="outline"
@@ -101,7 +101,7 @@ export function PageSettings({ setSettings }: any) {
                     <span className="sr-only">Decrease</span>
                   </Button>
                   <div className="flex-1 items-center text-center">
-                    <input aria-label="Page number end of range" className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="text" inputMode="numeric" pattern="[0-9]*" enterKeyHint="done" min={1} max={604} onChange={(e: any) => validateSecondValue(e)} value={secondValue}/>
+                    <input aria-label="Page number end of range" className="border-b text-3xl lg:text-4xl text-center font-bold tracking-tighter w-28" type="text" inputMode="numeric" pattern="[0-9]*" enterKeyHint="done" onChange={(e: any) => validateSecondValue(e)} value={secondValue}/>
                   </div>
                   <Button
                     variant="outline"

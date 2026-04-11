@@ -1,12 +1,4 @@
 import * as React from "react"
-import {SlidersHorizontal} from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
 import {Tabs} from "@radix-ui/react-tabs";
 import {TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {SurahSettings} from "@/app/components/SurahSettings";
