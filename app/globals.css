@@ -74,3 +74,20 @@
       @apply bg-background text-foreground;
     }
   }
+
+  .text-hidden {
+    color: transparent;
+    position: relative;
+  }
+
+  .text-hidden::after {
+    content: "● ● ● ● ● ● ● ● ● ● ● ● ● ●";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: black;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+  }

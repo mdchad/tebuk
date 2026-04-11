@@ -92,11 +92,10 @@ const Container = () => {
         { !!settings?.chapter || !!settings?.page || !!settings?.juz? (
           <div className="flex gap-1 justify-center items-center">
             <p className="font-mono text-xs lg:text-sm">Surah:
-              {
-                revealSurah ?
-                  <span> {chapter.find(c => c.id === data?.verse.chapter_id)?.name_simple}</span> :
-                  <span> ● ● ● ●</span>
-              }
+              {' '}
+              <span className={!revealSurah ? 'text-hidden' : ''}>
+                {chapter.find(c => c.id === data?.verse.chapter_id)?.name_simple}
+              </span>
             </p>
             <Button size="sm" variant="ghost" onClick={() => setRevealSurah(!revealSurah)}>
               { revealSurah ? (
@@ -106,11 +105,10 @@ const Container = () => {
               )}
             </Button>
             <p className="font-mono text-xs lg:text-sm">Page:
-              {
-                revealPage ?
-                  <span> {data?.verse.page_number}</span>:
-                  <span> ● ● </span>
-              }
+              {' '}
+              <span className={!revealPage ? 'text-hidden' : ''}>
+                {data?.verse.page_number}
+              </span>
             </p>
             <Button size="sm" variant="ghost" onClick={() => setRevealPage(!revealPage)}>
               { revealPage ? (
