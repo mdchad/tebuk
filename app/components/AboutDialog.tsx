@@ -23,7 +23,7 @@ export default function AboutDialog() {
         </DialogHeader>
         <div className="space-y-3 text-sm text-gray-600 font-mono">
           <p>
-            tebuk.app is a Quran memorization practice tool designed to help you build and maintain your hifz. <strong>Tebuk</strong> (Malay: &ldquo;to poke&rdquo;) is a well-known hifz revision technique where you randomly poke an ayah or verse and continue reciting from there, testing your memory without a running start.
+            tebuk.app is a Quran memorization practice tool designed to help you build and maintain your hifz. <strong>Tebuk</strong> (Malay: &ldquo;to poke&rdquo;) is a well-known hifz revision technique where a leader randomly reads an ayah or verse and the participant must continue reciting from just from memory.
           </p>
           <p>
             Pick a mode either by <strong>surah</strong>, <strong>page</strong>, or <strong>juz</strong> and get a random verse to recite from memory. Shuffle for a new one whenever you&apos;re ready.
