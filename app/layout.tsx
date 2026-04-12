@@ -24,20 +24,20 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.tebuk.app'),
-  title: "tebuk. — Ulangkaji Hafazan Al-Quran | Quran Memorization Tool",
-  description: "Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free hifz practice tool — pick a surah, page, or juz and recite from memory.",
-  keywords: ['tebuk', 'tebuk hafazan', 'ulangkaji hafazan', 'hafazan al-quran', 'hifz', 'quran memorization', 'tebuk ayat', 'latihan hafazan'],
+  title: "tebuk. | Ulangkaji Hafazan Al-Quran | Quran Memorization Tool",
+  description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free memorization practice tool for picking a surah, page, or juz and continue reciting it from memory.',
+  keywords: ['tebuk', 'tebuk quran', 'tebuk hafalan', 'ulangkaji hafalan', 'hafazan al-quran', 'hifz', 'quran memorization', 'tebuk ayat', 'latihan hafazan', 'tebuk surah'],
   openGraph: {
     images: 'https://www.tebuk.app/api/og',
-    title: 'tebuk. — Ulangkaji Hafazan Al-Quran | Quran Memorization Tool',
-    description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free hifz practice tool — pick a surah, page, or juz and recite from memory.',
+    title: "tebuk. | Ulangkaji Hafazan Al-Quran | Quran Memorization Tool",
+    description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free memorization practice tool for picking a surah, page, or juz and continue reciting it from memory.',
     url: 'https://www.tebuk.app',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'tebuk. — Ulangkaji Hafazan Al-Quran | Quran Memorization Tool',
-    description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free hifz practice tool — pick a surah, page, or juz and recite from memory.',
+    title: "tebuk. | Ulangkaji Hafazan Al-Quran | Quran Memorization Tool",
+    description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free memorization practice tool for picking a surah, page, or juz and continue reciting it from memory.',
     images: ['https://www.tebuk.app/api/og'],
   },
 };
@@ -48,7 +48,7 @@ const jsonLd = {
   '@type': 'WebApplication',
   name: 'tebuk.',
   url: 'https://www.tebuk.app',
-  description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free hifz practice tool — pick a surah, page, or juz and recite from memory.',
+  description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free memorization practice tool for picking a surah, page, or juz and continue reciting it from memory.',
   applicationCategory: 'EducationApplication',
   operatingSystem: 'Web',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
