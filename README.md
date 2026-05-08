@@ -1,6 +1,6 @@
 # tebuk.
 
-Pick a random surah, page, or juz and continue reciting from memory. A small tool for ulangkaji hafazan.
+Pick a random surah, page, or juz and continue reciting from memory. A small tool for memorization.
 
 Live at [tebuk.app](https://www.tebuk.app).
 
