@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: 'https://www.tebuk.app/api/og',
     title: "tebuk. | Tebuk Al-Quran, Surah & Ayat | Quran Memorization Tool",
-f    description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free memorization practice tool for picking a surah, page, or juz and continue reciting it from memory.',
+    description: 'Tebuk ayat secara rawak untuk ulangkaji hafazan Al-Quran. A free memorization practice tool for picking a surah, page, or juz and continue reciting it from memory.',
     url: 'https://www.tebuk.app',
     type: 'website',
   },
